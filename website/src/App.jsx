@@ -5,6 +5,7 @@ import About from './components/Aboutus/About';
 import Contact from './components/Contactus/Contact';
 import Homepage from './components/HomePage/Homepage';
 import Price from './components/Pricing/Price';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/price" element={<Price />} />
       </Routes>
+      <Footer/>
     </>
   );
 };

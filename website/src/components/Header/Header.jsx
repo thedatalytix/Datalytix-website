@@ -44,7 +44,7 @@ const Header = () => {
             Contact
           </Link>
           <Link to="/price" className="mr-5 hover:text-gray-400">
-            Price
+            Pricing
           </Link>
         </nav>
       </div>

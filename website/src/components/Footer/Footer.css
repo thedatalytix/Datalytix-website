@@ -1,0 +1,139 @@
+.footer {
+  background: linear-gradient(180deg, #000000 0%, #36017a 100%);
+  color: #ffffff;
+  padding: 20px 20px; /* Top/Bottom padding of 40px, Left/Right padding of 20px */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 80px;
+  max-width: 1350px;
+  margin: 20px auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+}
+
+.col1,
+.col2 {
+  flex: 1;
+  min-width: 250px;
+}
+
+.col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-heading {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 170px;
+  position: relative;
+  display: inline-block;
+}
+
+.logo-heading .copyright {
+  font-size: 12px; /* Smaller font size for the © symbol */
+  vertical-align: top; /* Aligns © to the top */
+  margin-left: 4px; /* Adds a little space between the text and the © symbol */
+  position: absolute;
+  top: 5px; /* Align to the top of the text */
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 150px;
+}
+
+.footer-link-left {
+  font-family: "Clash Grotesk", sans-serif;
+  font-size: 40px;
+  line-height: 30px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-link-right {
+  font-family: "Clash Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-link {
+  font-family: "Clash Grotesk", sans-serif;
+  line-height: 30px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Hover effect for all links */
+.footer-link:hover,
+.footer-link-left:hover,
+.footer-link-right:hover {
+  color: #a074f9;
+}
+
+/* Active link style */
+.footer-link.active,
+.footer-link-left.active,
+.footer-link-right.active {
+  color: #ffe9b1;
+}
+
+.col2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-text {
+  font-size: 32px;
+  line-height: 28px;
+  margin-bottom: 150px;
+}
+
+.footer-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 0; /* Remove the bottom margin */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col1,
+  .col2 {
+    min-width: 100%;
+  }
+
+  .col1 {
+    order: 2; /* Move col1 below col2 */
+  }
+
+  .footer-links {
+    margin-bottom: 0; /* Remove margin-bottom to reduce spacing */
+  }
+
+  .footer-copyright {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+    position: relative;
+    bottom: 0px; /* Position it at the bottom */
+    left: 0px; /* Align to the left with padding */
+    right: 20px; /* Align to the right with padding */
+  }
+}

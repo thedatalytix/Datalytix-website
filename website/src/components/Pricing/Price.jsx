@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Price = () => {
   return (
-    <div className='text-white'>Pricing</div>
-  )
-}
+    <div className="text-white">
+      Pricing
+    </div>
+  );
+};
 
-export default Price
+export default Price;
