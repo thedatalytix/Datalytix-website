@@ -43,7 +43,9 @@ const Header = () => {
           <Link to="/contact" className="mr-5 hover:text-gray-400">
             Contact
           </Link>
-          {/* <Link to="/price" className="mr-5 hover:text-gray-400">Price</Link> */}
+          <Link to="/price" className="mr-5 hover:text-gray-400">
+            Price
+          </Link>
         </nav>
       </div>
     </header>
