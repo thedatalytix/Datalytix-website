@@ -1,3 +1,14 @@
+/* parallax effect */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+}
+
 .aboutus-page {
   position: relative;
   width: 100%;
@@ -76,43 +87,46 @@
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .aboutus-content {
+    width: 100%;
+    padding-right: 10px;
+  }
+
+  .about-us-title,
+  .about-us-subtitle,
+  .about-us-description {
+    width: 100%;
+  }
+}
 
 /* HOW IT WORKS about section */
 .about-section {
-  padding: 0px;
+  padding: 80px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   background-color: #000;
+}
+
+.about-container {
   max-width: 1350px;
-  width: 100%;
-  margin: 60px auto 0;
-  box-sizing: border-box;
-  margin-bottom: 40px;
+  margin: 40px auto 0;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.left-content,
-.right-content {
+.left-content-about,
+.right-content-about {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.left-content {
+.left-content-about {
   margin-right: 20px;
 }
 
-.right-content {
+.right-content-about {
   margin-left: 20px;
 }
 
@@ -123,17 +137,17 @@
 }
 
 .subheading {
-  font-size: 16px;
+  font-size: 18px;
   color: #a074f9;
 }
 
 .main-title {
-  font-size: 32px;
+  font-size: 42px;
   color: #ffffff;
 }
 
 .heading {
-  font-size: 20px;
+  font-size: 32px;
   color: #ffffff;
 }
 
@@ -150,12 +164,12 @@
 }
 
 .number {
-  font-size: 24px;
+  font-size: 20px;
   color: #a074f9;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 16px;
   color: #ffffff;
 }
 
@@ -225,11 +239,15 @@
 /* General Wrapper Styles */
 .ana-wrapper {
   padding: 20px;
+  position: relative; /* Add this line */
+  z-index: 1; /* Add this line */
+  overflow: hidden; /* Add this line */
+  background-color: #000;
 }
 
 .ana-container {
   max-width: 1350px;
-  margin: 40px auto 0;
+  margin: 0px auto 0;
 }
 
 .ana-container-inner {
@@ -251,10 +269,13 @@
 
 .ana-services-c1 {
   flex-basis: 30%;
+  font-size: 32px;
+  margin-top: 0;
 }
 
 .ana-services-c2 {
   flex-basis: 65%;
+  /* margin-top: 30px;  */
 }
 
 .good-at {
@@ -266,15 +287,8 @@
   font-size: 2rem;
 }
 
-.margin-bottom-25 {
-  margin-bottom: 25px;
-}
-
-.margin-bottom-40 {
-  margin-bottom: 40px;
-}
-
 .paragraph-large {
+  margin-bottom: 40px;
   font-size: 1.125rem;
 }
 
@@ -295,14 +309,17 @@
 .ana-feature img {
   width: 100px;
   height: 100px;
+  margin-bottom: 30px;
 }
 
 .ana-feature h3 {
   margin-bottom: 15px;
+  font-size: 32px;
 }
 
-.margin-bottom-30 {
-  margin-bottom: 30px;
+.ana-feature p {
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 /* Bullet List */

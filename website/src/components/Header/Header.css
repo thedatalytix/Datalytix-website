@@ -1,0 +1,53 @@
+/* Container and general styles */
+.body-font {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styles */
+  .header {
+    background-color: #0000004D;
+  }
+  
+  /* Link styles */
+  .header-link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .header-link:hover {
+    color: #a074f9;
+  }
+  
+  /* Active link style */
+  .header-link.active {
+    color: #ffe9b1; /* Active link color */
+  }
+  
+  /* Logo styles */
+  .logo .text-xl {
+    font-size: 1.25rem;
+  }
+  
+  /* Responsive navigation */
+  .nav {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .nav {
+      display: flex;
+    }
+  }
+  
+  /* Hamburger button */
+  .hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger svg {
+    width: 24px;
+    height: 24px;
+  }
+  

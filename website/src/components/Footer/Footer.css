@@ -1,7 +1,7 @@
 .footer {
   background: linear-gradient(180deg, #000000 0%, #36017a 100%);
   color: #ffffff;
-  padding: 20px 20px; /* Top/Bottom padding of 40px, Left/Right padding of 20px */
+  padding: 20px 20px; 
 }
 
 .footer-container {
@@ -38,11 +38,11 @@
 }
 
 .logo-heading .copyright {
-  font-size: 12px; /* Smaller font size for the © symbol */
-  vertical-align: top; /* Aligns © to the top */
-  margin-left: 4px; /* Adds a little space between the text and the © symbol */
+  font-size: 12px;
+  vertical-align: top; 
+  margin-left: 4px; 
   position: absolute;
-  top: 5px; /* Align to the top of the text */
+  top: 5px;
 }
 
 .footer-links {
@@ -111,29 +111,49 @@
 .footer-copyright {
   font-size: 14px;
   margin-top: 20px;
-  margin-bottom: 0; /* Remove the bottom margin */
+  margin-bottom: 0; 
 }
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
   .col1,
   .col2 {
     min-width: 100%;
   }
 
-  .col1 {
-    order: 2; /* Move col1 below col2 */
+  .logo-heading {
+    order: 1;
+    margin-bottom: 20px; 
+  }
+
+  .footer-text {
+    order: 2; 
+    margin-bottom: 20px;
+    text-align: center; 
   }
 
   .footer-links {
-    margin-bottom: 0; /* Remove margin-bottom to reduce spacing */
+    order: 3; 
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    margin-bottom: 20px; 
+  }
+
+  .footer-social-links {
+    order: 4; 
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px; 
   }
 
   .footer-copyright {
-    margin-bottom: 20px; /* Adjust the margin as needed */
-    position: relative;
-    bottom: 0px; /* Position it at the bottom */
-    left: 0px; /* Align to the left with padding */
-    right: 20px; /* Align to the right with padding */
+    order: 5; 
+    text-align: center; 
   }
 }

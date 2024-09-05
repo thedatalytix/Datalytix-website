@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../Header/Header.css"; 
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <header className="text-white body-font">
+    <header className="header text-white body-font">
       <div className="container flex flex-wrap p-5 items-center">
-        <Link
+        <NavLink
           to="/"
-          className="flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
+          className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
         >
           <span className="ml-3 text-xl">DATALYTIX Solutions</span>
-        </Link>
+        </NavLink>
         <button
-          className="inline-flex items-center md:hidden text-white ml-auto"
-          onClick={() => setIsOpen(!isOpen)}
+          className="hamburger inline-flex items-center md:hidden text-white ml-auto"
+          onClick={toggleMenu}
         >
           <svg
             className="w-6 h-6"
@@ -33,19 +38,31 @@ const Header = () => {
           </svg>
         </button>
         <nav
-          className={`${
+          className={`nav ${
             isOpen ? "block" : "hidden"
           } md:flex md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center`}
         >
-          <Link to="/about" className="mr-5 hover:text-gray-400">
+          <NavLink
+            to="/about"
+            className="header-link mr-5"
+            activeClassName="active"
+          >
             About
-          </Link>
-          <Link to="/contact" className="mr-5 hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="header-link mr-5"
+            activeClassName="active"
+          >
             Contact
-          </Link>
-          <Link to="/price" className="mr-5 hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/price"
+            className="header-link mr-5"
+            activeClassName="active"
+          >
             Pricing
-          </Link>
+          </NavLink>
         </nav>
       </div>
     </header>
