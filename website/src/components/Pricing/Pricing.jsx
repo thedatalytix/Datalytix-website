@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FaCheck } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 import "../Pricing/Pricing.css";
 
 const Pricing = () => {
@@ -9,6 +10,11 @@ const Pricing = () => {
   const handleToggle = (event) => {
     setIsYearly(event.target.id === "yearly");
   };
+
+  const { ref: sectionRef, inView: sectionInView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   // Parallax effect on scroll
   useEffect(() => {
@@ -197,7 +203,10 @@ const Pricing = () => {
         </div>
       </section>
 
-      <section className="simple-pricing-section">
+      <section
+        className={`simple-pricing-section ${sectionInView ? "in-view" : ""}`}
+        ref={sectionRef}
+      >
         <div className="pricing-header flex gap-2.5">
           <p className="subheading text-lg text-[#a074f9]">SIMPLE PRICING</p>
           <h2 className="main-title text-4xl text-white">
@@ -207,293 +216,293 @@ const Pricing = () => {
 
         <section className="simple-pricing-section-list text-white">
           <div className="mx-auto p-6 overflow-x-auto">
-            <div class="hidden mt-16 lg:block">
-              <table class="w-full">
+            <div className="hidden mt-16 lg:block">
+              <table className="w-full">
                 <thead>
                   <tr>
-                    <th class="py-8 pr-4"></th>
-                    <th class="px-4 py-8 text-center">
-                      <span class="text-base font-medium">Startup</span>
-                      <div class="mt-6">
-                        <span class="text-4xl font-bold">$59</span>
-                        <span class="text-sm font-medium">/mo</span>
+                    <th className="py-8 pr-4"></th>
+                    <th className="px-4 py-8 text-center">
+                      <span className="text-base font-medium">Startup</span>
+                      <div className="mt-6">
+                        <span className="text-4xl font-bold">$59</span>
+                        <span className="text-sm font-medium">/mo</span>
                       </div>
-                      <button class="get-started mt-4">Get started</button>
+                      <button className="get-started mt-4">Get started</button>
                     </th>
 
-                    <th class="px-4 py-8 text-center bg-custom-color rounded-t-xl">
-                      <span class="text-base font-medium">Efficient </span>
-                      <div class="mt-6">
-                        <span class="text-4xl font-bold">$89</span>
-                        <span class="text-sm font-medium">/mo</span>
+                    <th className="px-4 py-8 text-center bg-custom-color rounded-t-xl">
+                      <span className="text-base font-medium">Efficient </span>
+                      <div className="mt-6">
+                        <span className="text-4xl font-bold">$89</span>
+                        <span className="text-sm font-medium">/mo</span>
                       </div>{" "}
                       <button className="get-started mt-4">Get started</button>
                     </th>
 
-                    <th class="px-4 py-8 text-center">
-                      <span class="text-base font-medium">Startup</span>
-                      <div class="mt-6">
-                        <span class="text-4xl font-bold">$59</span>
-                        <span class="text-sm font-medium">/mo</span>
+                    <th className="px-4 py-8 text-center">
+                      <span className="text-base font-medium">Startup</span>
+                      <div className="mt-6">
+                        <span className="text-4xl font-bold">$59</span>
+                        <span className="text-sm font-medium">/mo</span>
                       </div>
-                      <button class="get-started mt-4">Get started</button>
+                      <button className="get-started mt-4">Get started</button>
                     </th>
                   </tr>
                 </thead>
                 {/* ROW1 */}
                 <tbody>
                   <tr>
-                    <td class="py-4 pr-4 text-2xl border-b border-gray-200">
+                    <td className="py-4 pr-4 text-2xl border-b border-gray-200">
                       Core features
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200"></td>
+                    <td className="px-4 py-4 text-center border-b border-gray-200"></td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color"></td>
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color"></td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200"></td>
+                    <td className="px-4 py-4 text-center border-b border-gray-200"></td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Basic Tools
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium text-gray-300 border-b border-gray-200">
                       Cloud Storage
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       50GB{" "}
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
                       100GB
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       500GB
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium text-gray-300 border-b border-gray-200">
                       Ads Management
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium text-gray-300 border-b border-gray-200">
                       Instant Data Refresh
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      -
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <span style={{ color: "red" }}>X</span>
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium text-gray-300 border-b border-gray-200">
                       Creative Tools
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       2{" "}
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
                       5
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       10
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium text-gray-300 border-b border-gray-200">
                       Weekly Reporting
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      -
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <span style={{ color: "red" }}>X</span>
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
                 </tbody>
                 {/* ROW2 */}
                 <tbody>
                   <tr>
-                    <td class="py-4 pr-4 text-2xl border-b border-gray-200">
+                    <td className="py-4 pr-4 text-2xl border-b border-gray-200">
                       Reporting{" "}
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200"></td>
+                    <td className="px-4 py-4 text-center border-b border-gray-200"></td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
                     </td>
-                    <td class="px-4 py-4 text-center border-b border-gray-200"></td>
+                    <td className="px-4 py-4 text-center border-b border-gray-200"></td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Live Editing
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Email Storage
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       10GB{" "}
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
                       Unlimited
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       Unlimited
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Team Management
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      -{" "}
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <span style={{ color: "red" }}>X</span>
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Instant Commenting
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      -
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <span style={{ color: "red" }}>X</span>
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Team Members
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       2{" "}
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
                       5
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
                       10
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="py-4 pr-4 font-medium border-b border-gray-200">
+                    <td className="py-4 pr-4 font-medium border-b text-gray-300 border-gray-200">
                       Advanced Reporting
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      -
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <span style={{ color: "red" }}>X</span>
                     </td>
 
-                    <td class="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
+                    <td className="px-4 py-4 text-center text-white border-b border-white/20 bg-custom-color">
                       {" "}
-                      <FaCheck className="mx-auto" />
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
 
-                    <td class="px-4 py-4 text-center border-b border-gray-200">
-                      <FaCheck className="mx-auto" />
+                    <td className="px-4 py-4 text-center border-b border-gray-200">
+                      <FaCheck className="mx-auto" style={{ color: "green" }} />
                     </td>
                   </tr>
                 </tbody>
