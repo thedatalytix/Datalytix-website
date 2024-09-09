@@ -28,7 +28,43 @@ const Contact = () => {
     };
   }, []);
 
+// ANIMATION FOR CARDS
+
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = cardRef.current.querySelectorAll(".framer-card");
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("visible");
+              }, index * 200); 
+            });
+            observer.unobserve(entry.target); 
+          }
+        });
+      },
+      { threshold: 0.5 } 
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+  
+  // ANIMATION FOR FAQ
   const [openIndex, setOpenIndex] = useState(null);
+  const [isInView, setIsInView] = useState(false);
+  const faqSectionRef = useRef(null);
 
   const faqData = [
     {
@@ -67,11 +103,33 @@ const Contact = () => {
         "You can allow anyone to create a copy of your Framer project by sending them a remix link. They can customize it, make it their own, and publish the remixed site in seconds.",
     },
   ];
-  
+
   const toggleAnswer = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is in view
+    );
+
+    if (faqSectionRef.current) {
+      observer.observe(faqSectionRef.current);
+    }
+
+    return () => {
+      if (faqSectionRef.current) {
+        observer.unobserve(faqSectionRef.current);
+      }
+    };
+  }, []);
   return (
     <>
       <div className="contactus-page" ref={parallaxRef}>
@@ -187,83 +245,88 @@ const Contact = () => {
       </section>
 
       {/* CARDS SECTION */}
-      <section className="framer-content-contact">
-        <div className="framer-cards-contact">
-          <div className="framer-card-contact framer-card-one">
-            <div className="framer-card-content">
-              <img
-                src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
-                alt="Features"
-                className="framer-card-image"
-              />
-              <h3 className="framer-card-title">
-                Understanding Your Business Goals
-              </h3>
-              <p className="framer-card-description">
-                We start by gaining a deep understanding of your business goals.
-              </p>
-            </div>
-          </div>
-          <div className="framer-card framer-card-two">
-            <div className="framer-card-content">
-              <img
-                src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
-                alt=""
-                className="framer-card-image"
-              />
-              <h3 className="framer-card-title">
-                Developing Tailored Solutions
-              </h3>
-              <p className="framer-card-description">
-                Next, our team of experts develops tailored solutions.
-              </p>
-            </div>
-          </div>
-          <div className="framer-card framer-card-three">
-            <div className="framer-card-content">
-              <img
-                src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
-                alt=""
-                className="framer-card-image"
-              />
-              <h3 className="framer-card-title">Implementing Technology</h3>
-              <p className="framer-card-description">
-                We leverage cutting-edge technology to implement seamlessly.
-              </p>
-            </div>
+      <div className="framer-content">
+      <div className="framer-about">
+        <div className="framer-left-content">
+          <h2 className="framer-heading">
+            Innovative Problem-Solving for Your Business Needs
+          </h2>
+        </div>
+        <div className="framer-right-content">
+          <p className="framer-subheading">SOLUTIONS</p>
+        </div>
+      </div>
+      <div className="framer-cards" ref={cardRef}>
+        <div className="framer-card framer-card-one">
+          <div className="framer-card-content">
+            <img
+              src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
+              alt="Features"
+              className="framer-card-image"
+            />
+            <h3 className="framer-card-title">
+              Understanding Your Business Goals
+            </h3>
+            <p className="framer-card-description">
+              We start by gaining a deep understanding of your business goals.
+            </p>
           </div>
         </div>
-      </section>
+        <div className="framer-card framer-card-two">
+          <div className="framer-card-content">
+            <img
+              src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
+              alt=""
+              className="framer-card-image"
+            />
+            <h3 className="framer-card-title">Developing Tailored Solutions</h3>
+            <p className="framer-card-description">
+              Next, our team of experts develops tailored solutions.
+            </p>
+          </div>
+        </div>
+        <div className="framer-card framer-card-three">
+          <div className="framer-card-content">
+            <img
+              src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
+              alt=""
+              className="framer-card-image"
+            />
+            <h3 className="framer-card-title">Implementing Technology</h3>
+            <p className="framer-card-description">
+              We leverage cutting-edge technology to implement seamlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
       {/* FAQ SECTION */}
-      <section className="faq-section">
-        <div className="container">
-          <div className="header-top">
-            <p className="sub-title">FREQUENTLY ASKED QUESTION</p>
-            <h2 className="main-title">Our Faqs</h2>
-          </div>
-          <div className="faq-box">
-            {faqData.map((faq, index) => (
-              <div className="faq-item">
-                <div className="question" onClick={() => toggleAnswer(index)}>
-                  {faq.question} 
-                  {openIndex === index ? (
-                    <FaTimes
-                      className="icon"
-                      style={{ color: "#F0E68C" }}
-                    />
-                  ) : (
-                    <FaPlus className="icon" style={{ color: "#F0E68C" }} />
-                  )}
-                </div>
-                <div className={`answer ${openIndex === index ? "open" : ""}`}>
-                  <p>{faq.answer}</p> 
-                </div>
-              </div>
-            ))}
-          </div>
+      <section className="faq-section" ref={faqSectionRef}>
+      <div className={`container ${isInView ? "visible" : ""}`}>
+        <div className={`header-top left-content`}>
+          <p className="sub-title">FREQUENTLY ASKED QUESTION</p>
+          <h2 className="main-title">Our Faqs</h2>
         </div>
-      </section>
+        <div className="faq-box">
+          {faqData.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="question" onClick={() => toggleAnswer(index)}>
+                {faq.question}
+                {openIndex === index ? (
+                  <FaTimes className="icon" style={{ color: "#F0E68C" }} />
+                ) : (
+                  <FaPlus className="icon" style={{ color: "#F0E68C" }} />
+                )}
+              </div>
+              <div className={`answer ${openIndex === index ? "open" : ""}`}>
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
     </>
   );
 };
