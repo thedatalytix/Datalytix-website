@@ -1,26 +1,25 @@
-import React, { useRef, useState } from "react";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-import "./HomePage.css";
+import "../HomePage/Homepage.css";
 
 const ServiceCard = ({ title, gradient, rotation, imageSrc, yOffset }) => (
   <motion.div
     className="absolute w-[250px] h-[300px] md:w-[300px] md:h-[380px] rounded-[20px] md:rounded-[35px] overflow-hidden"
     style={{
       rotate: rotation,
-      left: "calc(50% - 125px)", // Adjusted for smaller screens
-      top: "calc(50% - 150px)", // Adjusted for smaller screens
+      left: "calc(50% - 125px)",
+      top: "calc(50% - 150px)",
       y: yOffset,
     }}
   >
     <div className="absolute inset-0 rounded-[20px] md:rounded-[35px] border border-white/5 border-t-0 overflow-hidden bg-gradient-to-b from-[#9b73f2]/20 to-[#5c3cd7]/20">
-      <div 
-        className="absolute inset-0" 
+      <div
+        className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(156, 116, 242, 0.11) 0%, rgb(92, 60, 215) 100%)'
+          background:
+            "linear-gradient(180deg, rgba(156, 116, 242, 0.11) 0%, rgb(92, 60, 215) 100%)",
         }}
       />
       <img
@@ -139,32 +138,36 @@ const Homepage = () => {
   return (
     <>
       <div className="homepage flex flex-col items-start justify-start p-5 sm:p-10">
-      <div className="section-container lg:ml-16">
-  <h1 className="heading heading-xl text-white">
-    <span className="block mb-2">Empower business with</span>
-    <span className="inline-block mb-2">modern technology</span>
-    <span className="block">solutions</span>
-  </h1>
-  <Link to="/about">
-    <button type="button" className="button inline-flex items-center mt-5 space-x-2"> 
-      <span>Learn more</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="var(--token-c14065e7-5a4d-4109-85cf-bca8f791260a, rgb(255, 255, 255))"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </button>
-  </Link>
-</div>
+        <div className="section-container lg:ml-16">
+          <h1 className="heading heading-xl text-white">
+            <span className="block mb-2">Empower business with</span>
+            <span className="inline-block mb-2">modern technology</span>
+            <span className="block">solutions</span>
+          </h1>
+          <Link to="/about">
+            <button
+              type="button"
+              className="button inline-flex items-center mt-5 space-x-2"
+            >
+              <span>Learn more</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--token-c14065e7-5a4d-4109-85cf-bca8f791260a, rgb(255, 255, 255))"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </Link>
+        </div>
 
-        <div className="flex-container">
+        {/* Transforming Content */}
+        <div className="flex-container-homepage">
           <div className="flex-inner">
             {/* Left side content */}
             <div className="text-left">
@@ -187,6 +190,7 @@ const Homepage = () => {
         </div>
       </div>
 
+      {/* DETAILS SECTION */}
       <div className="info-container">
         <div className="info-content">
           <div className="info-text">
@@ -218,10 +222,12 @@ const Homepage = () => {
               <h2 className="stat-number">30%</h2>
               <p className="stat-description">Increase in Productivity</p>
             </div>
+            <div className="stat-divider"></div>
           </div>
         </div>
       </div>
 
+      {/* Innovative Cards Section */}
       <div className="framer-content">
         <div className="framer-about">
           <div className="framer-left-content">
@@ -280,8 +286,9 @@ const Homepage = () => {
         </div>
       </div>
 
-      <section className="about-section">
-        <div className="container">
+      {/* Innovative Content Section */}
+      <section className="about-section-homepage">
+        <div className="container-innovate">
           <div className="content">
             <div className="left-content">
               <div className="rich-text-container-innovate">
@@ -313,10 +320,11 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Our Service Card Section */}
       <div
         ref={containerRef}
         className="relative"
-        style={{ height: "100vh", overflow: "hidden" }} // Fixed height to prevent scrolling
+        style={{ height: "100vh", overflow: "hidden" }}
       >
         <motion.div
           className="sticky top-0 h-screen flex items-center justify-center"
@@ -341,103 +349,105 @@ const Homepage = () => {
         </motion.div>
       </div>
 
-      <section class="testimonial-section">
-        <div class="container">
-          <div class="heading1">
-            <p class="subheading1">REVIEWS</p>
+      {/* Reviews Section */}
+      <section className="testimonial-section mx-auto">
+        <div className="review-container">
+          <div className="heading1">
+            <p className="subheading1">REVIEWS</p>
             <h2>Our Customers Reviews</h2>
           </div>
-          <div class="cards">
-            <div class="card-container">
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+          <div className="cards">
+            <div className="card-container">
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   Datalytix has been an amazing investment partner for me. Their
                   investment management services are easy to use.
                 </p>
-                <p class="testimonial-author">@ Yury</p>
+                <p className="testimonial-author">@ Yury</p>
               </div>
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   The services provided by Datalytix helped me achieve my
                   investment goals easily and effectively.
                 </p>
-                <p class="testimonial-author">@ Alex</p>
+                <p className="testimonial-author">@ Alex</p>
               </div>
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   I am so glad I chose Datalytix for my financial needs. Their
                   team is very supportive and knowledgeable.
                 </p>
-                <p class="testimonial-author">@ John</p>
+                <p className="testimonial-author">@ John</p>
               </div>
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   Thanks to Datalytix, my investments are growing steadily. I
                   highly recommend their services.
                 </p>
-                <p class="testimonial-author">@ Sarah</p>
+                <p className="testimonial-author">@ Sarah</p>
               </div>
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   Datalytix has been an amazing investment partner for me. Their
                   investment management services are easy to use.
                 </p>
-                <p class="testimonial-author">@ Joel</p>
+                <p className="testimonial-author">@ Joel</p>
               </div>
-              <div class="testimonial-card">
-                <div class="stars">
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
-                  <span class="star"></span>
+              <div className="testimonial-card">
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
                 </div>
-                <p class="testimonial-text">
+                <p className="testimonial-text">
                   Datalytix has been an amazing investment partner for me. Their
                   investment management services are easy to use.
                 </p>
-                <p class="testimonial-author">@ Noel</p>
+                <p className="testimonial-author">@ Noel</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* FAQ Section */}
       <section className="faq-section">
         <div className="container">
           <div className="header-top">
@@ -448,18 +458,15 @@ const Homepage = () => {
             {faqData.map((faq, index) => (
               <div className="faq-item">
                 <div className="question" onClick={() => toggleAnswer(index)}>
-                  {faq.question} {/* This should be your actual question */}
+                  {faq.question}
                   {openIndex === index ? (
-                    <FaTimes
-                      className="icon"
-                      style={{ color: "lightyellow" }}
-                    />
+                    <FaTimes className="icon" style={{ color: "#F0E68C" }} />
                   ) : (
-                    <FaPlus className="icon" style={{ color: "lightyellow" }} />
+                    <FaPlus className="icon" style={{ color: "#F0E68C" }} />
                   )}
                 </div>
                 <div className={`answer ${openIndex === index ? "open" : ""}`}>
-                  <p>{faq.answer}</p> {/* This should be your actual answer */}
+                  <p>{faq.answer}</p>
                 </div>
               </div>
             ))}

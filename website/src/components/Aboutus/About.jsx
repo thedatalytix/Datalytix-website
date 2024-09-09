@@ -111,8 +111,8 @@ const About = () => {
                 </h2>
               </div>
             </div>
-            <div className="right-content-about flex-1 ml-5">
-              <h1 className="heading text-3xl text-white mb-5">
+            <div className="right-content-about flex-1 ml-0">
+              <h1 className="heading-about text-3xl text-white mb-5">
                 At Datalytix, we specialize in providing innovative software
                 solutions that empower businesses to streamline operations,
                 enhance productivity, and achieve their goals efficiently.
@@ -120,10 +120,10 @@ const About = () => {
               {listItems.map((item, index) => (
                 <div
                   key={item.number}
-                  className={`list-item mb-5 opacity-0 transform translate-x-10 transition-all duration-500 ease-out ${
+                  className={`about-list-item mb-5 opacity-0 transform translate-x-10 transition-all duration-500 ease-out ${
                     sectionInView ? `opacity-100 translate-x-0` : ""
                   }`}
-                  style={{ transitionDelay: `${index * 250}ms` }} // Adds delay for each item
+                  style={{ transitionDelay: `${index * 500}ms` }} // Adds delay for each item
                 >
                   <div className="list-item-content flex items-center gap-2.5 mb-1">
                     <p className="number text-xl text-[#a074f9]">

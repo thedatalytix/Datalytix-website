@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className="header text-white body-font">
-      <div className="container flex flex-wrap p-5 items-center">
+      <div className="header-container flex flex-wrap p-5 items-center">
         <NavLink
           to="/"
           className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
@@ -55,13 +55,6 @@ const Header = () => {
             activeClassName="active"
           >
             Contact
-          </NavLink>
-          <NavLink
-            to="/price"
-            className="header-link mr-5"
-            activeClassName="active"
-          >
-            Pricing
           </NavLink>
         </nav>
       </div>
