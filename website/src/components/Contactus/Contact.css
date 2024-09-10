@@ -275,6 +275,7 @@
   z-index: 1;
   overflow: hidden;
   background-color: #000;
+  margin-bottom: 80px;
 }
 
 .framer-about {

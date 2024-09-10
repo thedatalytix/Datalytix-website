@@ -1,11 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../HomePage/Homepage.css";
-import "../HomePage/OurServiceSection"
 import OurServicesSection from "../HomePage/OurServiceSection";
 
 const Homepage = () => {
-  
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +21,7 @@ const Homepage = () => {
           }
         });
       },
-      { threshold: 0.5 } 
+      { threshold: 0.5 }
     );
 
     if (cardRef.current) {
@@ -36,7 +34,6 @@ const Homepage = () => {
       }
     };
   }, []);
-
 
   return (
     <>
@@ -132,60 +129,62 @@ const Homepage = () => {
 
       {/* Innovative Cards Section */}
       <div className="framer-content">
-      <div className="framer-about">
-        <div className="framer-left-content">
-          <h2 className="framer-heading">
-            Innovative Problem-Solving for Your Business Needs
-          </h2>
+        <div className="framer-about">
+          <div className="framer-left-content">
+            <h2 className="framer-heading">
+              Innovative Problem-Solving for Your Business Needs
+            </h2>
+          </div>
+          <div className="framer-right-content">
+            <p className="framer-subheading">SOLUTIONS</p>
+          </div>
         </div>
-        <div className="framer-right-content">
-          <p className="framer-subheading">SOLUTIONS</p>
+        <div className="framer-cards" ref={cardRef}>
+          <div className="framer-card framer-card-one">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
+                alt="Features"
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">
+                Understanding Your Business Goals
+              </h3>
+              <p className="framer-card-description">
+                We start by gaining a deep understanding of your business goals.
+              </p>
+            </div>
+          </div>
+          <div className="framer-card framer-card-two">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
+                alt=""
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">
+                Developing Tailored Solutions
+              </h3>
+              <p className="framer-card-description">
+                Next, our team of experts develops tailored solutions.
+              </p>
+            </div>
+          </div>
+          <div className="framer-card framer-card-three">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
+                alt=""
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">Implementing Technology</h3>
+              <p className="framer-card-description">
+                We leverage cutting-edge technology to implement seamlessly.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="framer-cards" ref={cardRef}>
-        <div className="framer-card framer-card-one">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
-              alt="Features"
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">
-              Understanding Your Business Goals
-            </h3>
-            <p className="framer-card-description">
-              We start by gaining a deep understanding of your business goals.
-            </p>
-          </div>
-        </div>
-        <div className="framer-card framer-card-two">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
-              alt=""
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">Developing Tailored Solutions</h3>
-            <p className="framer-card-description">
-              Next, our team of experts develops tailored solutions.
-            </p>
-          </div>
-        </div>
-        <div className="framer-card framer-card-three">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
-              alt=""
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">Implementing Technology</h3>
-            <p className="framer-card-description">
-              We leverage cutting-edge technology to implement seamlessly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
 
       {/* Innovative Content Section */}
       <section className="about-section-homepage">
@@ -208,11 +207,15 @@ const Homepage = () => {
               </div>
               <div className="rich-text-container-sub">
                 <h4 className="subheading-sub">
-                  At Datalytix, we specialize in providing innovative<br/>
-                  software solutions that empower businesses to<br/>
-                  streamline operations,enhance productivity,<br/>
-                  and achieve their goals efficiently.
-                  Discover how our solutions can transform your business<br />
+                  At Datalytix, we specialize in providing innovative
+                  <br />
+                  software solutions that empower businesses to
+                  <br />
+                  streamline operations,enhance productivity,
+                  <br />
+                  and achieve their goals efficiently. Discover how our
+                  solutions can transform your business
+                  <br />
                   today.
                 </h4>
               </div>
@@ -222,7 +225,8 @@ const Homepage = () => {
       </section>
 
       {/* Our Service Card Section */}
-      <OurServicesSection/>
+      <OurServicesSection />
+      
       {/* Reviews Section */}
       <section className="testimonial-section mx-auto">
         <div className="review-container">
@@ -319,7 +323,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-      </section>   
+      </section>
     </>
   );
 };

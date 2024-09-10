@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import { FaPlus, FaTimes } from "react-icons/fa";
 import "../Contactus/Contact.css";
 
 const Contact = () => {

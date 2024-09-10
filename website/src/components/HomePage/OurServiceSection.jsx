@@ -1,8 +1,7 @@
-
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const ServiceCard = ({ title, gradient, rotation, imageSrc, yOffset }) => (
+const ServiceCard = ({ title, rotation, imageSrc, yOffset }) => (
   <motion.div
     className="absolute w-[250px] h-[300px] md:w-[300px] md:h-[380px] rounded-[20px] md:rounded-[35px] lg:ml-10 overflow-hidden"
     style={{
@@ -45,27 +44,35 @@ const OurServicesSection = () => {
   const services = [
     {
       title: "Innovative Solutions",
-      gradient: "bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600",
+      gradient:
+        "bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600",
       rotation: -20,
-      imageSrc: "https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024",
+      imageSrc:
+        "https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024",
     },
     {
       title: "Hardware Solution",
-      gradient: "bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700",
+      gradient:
+        "bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700",
       rotation: -13,
-      imageSrc: "https://framerusercontent.com/images/TriMEg9VI7vab6L5vl80XoMJYF8.jpg",
+      imageSrc:
+        "https://framerusercontent.com/images/TriMEg9VI7vab6L5vl80XoMJYF8.jpg",
     },
     {
       title: "Artificial Intelligence",
-      gradient: "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800",
+      gradient:
+        "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800",
       rotation: -5,
-      imageSrc: "https://framerusercontent.com/images/7Zpq5rsCuhC8CoNtwow4eE3TemA.png",
+      imageSrc:
+        "https://framerusercontent.com/images/7Zpq5rsCuhC8CoNtwow4eE3TemA.png",
     },
     {
       title: "Software Solution",
-      gradient: "bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900",
+      gradient:
+        "bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900",
       rotation: 5,
-      imageSrc: "https://framerusercontent.com/images/TrbTQ8gSDTFgzJUBQkhOk2hAWOA.jpg",
+      imageSrc:
+        "https://framerusercontent.com/images/TrbTQ8gSDTFgzJUBQkhOk2hAWOA.jpg",
     },
   ];
 
@@ -86,7 +93,7 @@ const OurServicesSection = () => {
   return (
     <div ref={containerRef} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-      <motion.div 
+        <motion.div
           className="text-[100px] md:text-[200px] font-light tracking-tighter text-center px-4 md:px-8 z-10"
           style={{ color: textColor }}
         >
