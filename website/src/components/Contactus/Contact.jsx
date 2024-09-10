@@ -245,7 +245,7 @@ const Contact = () => {
       </section>
 
       {/* CARDS SECTION */}
-      <div className="framer-content">
+      <div className="framer-content-contact">
       <div className="framer-about">
         <div className="framer-left-content">
           <h2 className="framer-heading">
