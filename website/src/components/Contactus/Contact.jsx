@@ -61,75 +61,7 @@ const Contact = () => {
     };
   }, []);
   
-  // ANIMATION FOR FAQ
-  const [openIndex, setOpenIndex] = useState(null);
-  const [isInView, setIsInView] = useState(false);
-  const faqSectionRef = useRef(null);
-
-  const faqData = [
-    {
-      question: "Template styling and Support",
-      answer:
-        "We often add new CSS styles via our properties. However, browser support for these properties may vary in Framer. Here we will provide an overview of the compatibility of modern styles added to Framer.",
-    },
-    {
-      question: "Troubleshooting Animation Issues",
-      answer:
-        'If you are experiencing problems with animations not working on your Framer site, particularly with ticker components or appear effects, the issue might be related to the "Reduced Motion" settings on specific devices or browsers. ',
-    },
-    {
-      question: "How to choose the right font license for Framer",
-      answer:
-        "Depending on the plan you have chosen with us, delivery can vary from 1 to 4 weeks.",
-    },
-    {
-      question: "Is my personal information secure?",
-      answer:
-        "Yes, we take data privacy and security seriously. Your personal information will be encrypted and stored securely.",
-    },
-    {
-      question: "Does this framer template is responsive?",
-      answer:
-        "The Free Plan is a generous offering designed for flexible and extensive experimentation, providing a broad range of features across various aspects. ",
-    },
-    {
-      question: "How to report an issue",
-      answer:
-        "If you run into an issue or bug, you can report it so we can solve it. If you have an enterprise plan, you can ping your account manager or product specialists directly.",
-    },
-    {
-      question: "How to create a remix link",
-      answer:
-        "You can allow anyone to create a copy of your Framer project by sending them a remix link. They can customize it, make it their own, and publish the remixed site in seconds.",
-    },
-  ];
-
-  const toggleAnswer = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the section is in view
-    );
-
-    if (faqSectionRef.current) {
-      observer.observe(faqSectionRef.current);
-    }
-
-    return () => {
-      if (faqSectionRef.current) {
-        observer.unobserve(faqSectionRef.current);
-      }
-    };
-  }, []);
+  
   return (
     <>
       <div className="contactus-page" ref={parallaxRef}>
