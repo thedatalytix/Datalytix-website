@@ -1,159 +1,105 @@
 .footer {
   background: linear-gradient(180deg, #000000 0%, #36017a 100%);
   color: #ffffff;
-  padding: 20px 20px; 
+  padding: 40px 20px;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 80px;
-  max-width: 1350px;
-  margin: 20px auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  position: relative;
-}
-
-.col1,
-.col2 {
-  flex: 1;
-  min-width: 250px;
-}
-
-.col1 {
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  max-width: 1350px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* The DATALYTIX - Logo Heading */
 .logo-heading {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 170px;
   position: relative;
-  display: inline-block;
+  margin: 0;
 }
 
-.logo-heading .copyright {
+.logo-heading .copyright-symbol {
   font-size: 12px;
-  vertical-align: top; 
-  margin-left: 4px; 
+  vertical-align: top;
+  margin-left: 4px;
   position: absolute;
   top: 5px;
 }
 
+/* Footer Text */
+.footer-text {
+  font-size: 18px;
+  line-height: 28px;
+  max-width: 600px;
+  margin: 0;
+  text-align: right;
+}
+
+/* Links Section */
 .footer-links {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 150px;
-}
-
-.footer-link-left {
-  font-family: "Clash Grotesk", sans-serif;
-  font-size: 40px;
-  line-height: 30px;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.footer-link-right {
-  font-family: "Clash Grotesk", sans-serif;
-  font-size: 20px;
-  line-height: 30px;
-  color: #ffffff;
-  text-decoration: none;
+  gap: 40px;
+  justify-content: center;
 }
 
 .footer-link {
   font-family: "Clash Grotesk", sans-serif;
-  line-height: 30px;
+  font-size: 20px;
   color: #ffffff;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Hover effect for all links */
-.footer-link:hover,
-.footer-link-left:hover,
-.footer-link-right:hover {
-  color: #a074f9;
+/* Hover effect for links */
+.footer-link:hover {
+  color: #a074f9; /* Purple color for hover */
 }
 
 /* Active link style */
-.footer-link.active,
-.footer-link-left.active,
-.footer-link-right.active {
-  color: #ffe9b1;
+.footer-link.active {
+  color: #ffe9b1; /* Yellow color for active state */
 }
 
-.col2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.footer-text {
-  font-size: 32px;
-  line-height: 28px;
-  margin-bottom: 150px;
-}
-
-.footer-social-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
+/* Copyright Section */
 .footer-copyright {
+  text-align: center;
   font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 0; 
 }
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .footer-container {
+  .footer-top {
     flex-direction: column;
-    align-items: center; 
-  }
-
-  .col1,
-  .col2 {
-    min-width: 100%;
-  }
-
-  .logo-heading {
-    order: 1;
-    margin-bottom: 20px; 
+    align-items: center;
+    text-align: center;
+    gap: 20px;
   }
 
   .footer-text {
-    order: 2; 
-    margin-bottom: 20px;
-    text-align: center; 
+    text-align: center;
+    font-size: 16px;
   }
 
   .footer-links {
-    order: 3; 
-    display: flex;
-    justify-content: center;
-    gap: 20px; 
-    margin-bottom: 20px; 
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
   }
 
-  .footer-social-links {
-    order: 4; 
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px; 
+  .footer-link {
+    font-size: 18px;
   }
 
-  .footer-copyright {
-    order: 5; 
-    text-align: center; 
+  .footer-container {
+    gap: 30px;
   }
 }

@@ -38,6 +38,46 @@ const About = () => {
     },
   ];
 
+  // GOOD AT WORK
+  const services = [
+    {
+      title: "Data Engineering",
+      description:
+        "Build and maintain systems for collecting, storing, processing, and analyzing your data efficiently and at scale.Our focus is always on Mission Success, and we are very pragmatic when choosing the best tools for the job.",
+      icon: "/data-eng.png",
+    },
+    {
+      title: "Data Analytics",
+      description:
+        "With analytics, we help our partners gain valuable insights into their operations and performance. Analytics allows teams to get transparency on ground realities, and lets organizations make data-driven decisions.",
+      icon: "/data-analytics.png",
+    },
+    {
+      title: "Data Science & Machine Learning",
+      description:
+        "Build and deploy production grade machine learning systems and pipelines at scale to support features like:",
+      icon: "/machine-learning.png",
+      list: [
+        "Personalized User Feeds.",
+        "Recommendation Systems.",
+        "Fraud Detection and Prevention.",
+        "Customer Churn Prediction and many many more.",
+      ],
+    },
+    {
+      title: "Data Security",
+      description:
+        "Design systems and processes for securing mission critical data like:",
+      icon: "/data-security.png",
+      list: [
+        "Automated Auditing and Monitoring data access.",
+        "Backup and Disaster Recovery.",
+        "Fine-grained Data Access Control systems.",
+        "Identify and Classify Data by sensitivity, value and impact.",
+      ],
+    },
+  ];
+
   // Parallax effect on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -142,77 +182,38 @@ const About = () => {
       </section>
 
       {/* What We're Good at */}
-      <div className="ana-wrapper">
-        <div className="ana-container">
-          <div className="ana-container-inner cc-padding-bottom-none">
-            <div className="ana-services-grid">
-              <div className="ana-services-c1">
-                <h2 className="display-2 text-white">
-                  What We're <span className="good-at">Good at.</span>
-                </h2>
-              </div>
-              <div className="ana-services-c2">
-                <div className="ana-features-grid">
-                  <div className="ana-feature cc-border-bottom">
+      <div className="bg-black text-white p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap -mx-4">
+            <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
+              <h2 className="text-4xl font-bold mb-4">
+                What We're <span className="text-purple-400">Good at.</span>
+              </h2>
+            </div>
+            <div className="w-full lg:w-2/3 px-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {services.map((service, index) => (
+                  <div key={index} className="pb-8">
                     <img
-                      src="./data-eng.png"
-                      loading="lazy"
-                      alt="data-engineering-icon"
-                      style={{ width: "100px", height: "100px" }}
+                      src={service.icon}
+                      alt={`${service.title} icon`}
+                      className="w-20 h-20 mb-6"
                     />
-                    <h3>Data Engineering</h3>
-                    <p>
-                      Build and maintain systems for collecting, storing,
-                      processing, and analyzing your data efficiently and at
-                      scale.
-                    </p>
+                    <h3 className="text-2xl font-semibold mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-lg mb-4">{service.description}</p>
+                    {service.list && (
+                      <ul className="list-disc list-inside">
+                        {service.list.map((item, i) => (
+                          <li key={i} className="text-xm mb-2">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <div className="ana-feature cc-border-bottom">
-                    <img
-                      src="./data-analytics.png"
-                      loading="lazy"
-                      alt="data-analytics-icon"
-                      style={{ width: "100px", height: "100px" }}
-                    />
-                    <h3>Data Analytics</h3>
-                    <p>
-                      Gain valuable insights into your operations and
-                      performance to make data-driven decisions.
-                    </p>
-                  </div>
-                  <div className="ana-feature cc-border-bottom">
-                    <img
-                      src="./machine-learning.png"
-                      loading="lazy"
-                      alt="machine-learning-icon"
-                      style={{ width: "100px", height: "100px" }}
-                    />
-                    <h3>Data Science & Machine Learning</h3>
-                    <p>
-                      Build and deploy production-grade machine learning systems
-                      at scale for features like:
-                    </p>
-                    <ul>
-                      <li>Personalized User Feeds</li>
-                      <li>Recommendation Systems</li>
-                      <li>Fraud Detection</li>
-                      <li>Customer Churn Prediction</li>
-                    </ul>
-                  </div>
-                  <div className="ana-feature cc-border-bottom">
-                    <img
-                      src="./data-security.png"
-                      loading="lazy"
-                      alt="data-security-icon"
-                      style={{ width: "100px", height: "100px" }}
-                    />
-                    <h3>Data Security</h3>
-                    <p>
-                      Design systems to secure mission-critical data with tools
-                      like encryption, auditing, and access control.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

@@ -4,44 +4,46 @@ import "../Footer/Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-    <div className="footer-container">
-      {/* Column 1 */}
-      <div className="col1">
-        <h4 className="logo-heading">
-          The DATALYTIX
-          <span className="copyright">©</span>
-        </h4>
+      <div className="footer-container">
+        {/* Top row with logo and text */}
+        <div className="footer-top">
+          {/* Left Side - Logo and Title */}
+          <h4 className="logo-heading">
+            The DATALYTIX
+            <span className="copyright-symbol">©</span>
+          </h4>
+
+          {/* Right Side - Text */}
+          <p className="footer-text">
+            Datalytix has the full types of potential for your start-up
+            business.
+          </p>
+        </div>
+
+        {/* Links Section */}
         <div className="footer-links">
-          <a href="/about" className="footer-link-left active">
+          <a
+            href="/about"
+            className={`footer-link ${
+              location.pathname === "/about" ? "active" : ""
+            }`}
+          >
             About
           </a>
-          <a href="/contact" className="footer-link-left">
+          <a
+            href="/contact"
+            className={`footer-link ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
             Contact
           </a>
         </div>
+
+        {/* Copyright Section */}
         <div className="footer-copyright">© 2024 All rights reserved</div>
       </div>
-  
-      {/* Column 2 */}
-      <div className="col2">
-        <p className="footer-text">
-          Datalytix has the full types of potential for your start-up business.
-        </p>
-        <div className="footer-social-links">
-          <a href="https://linkedin.com" className="footer-link-right" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a href="https://instagram.com" className="footer-link-right" target="_blank" rel="noopener noreferrer">
-            Instagram
-          </a>
-          <a href="https://facebook.com" className="footer-link-right" target="_blank" rel="noopener noreferrer">
-            Facebook
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
+    </footer>
   );
 };
 
