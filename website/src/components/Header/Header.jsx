@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "../Header/Header.css"; 
+import "../Header/Header.css";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,13 +11,15 @@ const Header = () => {
 
   return (
     <header className="header text-white body-font">
-      <div className="header-container flex flex-wrap p-5 items-center">
+      <div className="header-container flex flex-wrap p-4 items-center">
         <NavLink
           to="/"
           className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
         >
-          <span className="ml-3 text-xl">DATALYTIX Solutions</span>
+          <img src="/logo.png" alt="Datalytix Logo" className="h-10 w-10" />
+          <span className="ml-3 text-xl">The DATALYTIX Solutions</span>
         </NavLink>
+
         <button
           className="hamburger inline-flex items-center md:hidden text-white ml-auto"
           onClick={toggleMenu}

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-top">
           {/* Left Side - Logo and Title */}
           <h4 className="logo-heading">
-            The DATALYTIX
+            The DATALYTIX Solutions
             <span className="copyright-symbol">©</span>
           </h4>
 
