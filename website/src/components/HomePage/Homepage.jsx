@@ -3,47 +3,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../HomePage/Homepage.css";
+import "../HomePage/OurServiceSection"
+import OurServicesSection from "../HomePage/OurServiceSection";
 
-const ServiceCard = ({ title, gradient, rotation, imageSrc, yOffset }) => (
-  <motion.div
-    className="absolute w-[250px] h-[300px] md:w-[300px] md:h-[380px] rounded-[20px] md:rounded-[35px] overflow-hidden"
-    style={{
-      rotate: rotation,
-      left: "calc(50% - 125px)",
-      top: "calc(50% - 150px)",
-      y: yOffset,
-    }}
-  >
-    <div className="absolute inset-0 rounded-[20px] md:rounded-[35px] border border-white/5 border-t-0 overflow-hidden bg-gradient-to-b from-[#9b73f2]/20 to-[#5c3cd7]/20">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(156, 116, 242, 0.11) 0%, rgb(92, 60, 215) 100%)",
-        }}
-      />
-      <img
-        src={imageSrc}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
-      />
-      <div
-        className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 text-white text-[40px] md:text-[51px] font-light"
-        style={{ lineHeight: "1" }}
-      >
-        {title}
-      </div>
-    </div>
-  </motion.div>
-);
+
 
 const Homepage = () => {
-  const containerRef = useRef(null);
-  const [isScrollComplete, setIsScrollComplete] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+  
 
   const cardRef = useRef(null);
 
@@ -62,7 +28,7 @@ const Homepage = () => {
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is in view
+      { threshold: 0.5 } 
     );
 
     if (cardRef.current) {
@@ -76,52 +42,7 @@ const Homepage = () => {
     };
   }, []);
 
-  const services = [
-    {
-      title: "Innovative Solutions",
-      gradient:
-        "bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600",
-      rotation: -1,
-      imageSrc:
-        "https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024",
-    },
-    {
-      title: "Hardware Solution",
-      gradient:
-        "bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700",
-      rotation: 2,
-      imageSrc:
-        "https://framerusercontent.com/images/TriMEg9VI7vab6L5vl80XoMJYF8.jpg",
-    },
-    {
-      title: "Artificial Intelligence",
-      gradient:
-        "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800",
-      rotation: 7,
-      imageSrc:
-        "https://framerusercontent.com/images/7Zpq5rsCuhC8CoNtwow4eE3TemA.png",
-    },
-    {
-      title: "Software Solution",
-      gradient:
-        "bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900",
-      rotation: 11,
-      imageSrc:
-        "https://framerusercontent.com/images/TrbTQ8gSDTFgzJUBQkhOk2hAWOA.jpg",
-    },
-  ];
-
-  // Define yOffsets to move cards up in reverse order
-  const yOffsets = services.map((_, index) =>
-    useTransform(
-      scrollYProgress,
-      [1 - (index + 1) / services.length, 1 - index / services.length],
-      [0, -800]
-    )
-  );
-
-  const pageScroll = useTransform(scrollYProgress, [0, 1], ["0vh", "0vh"]);
-
+ 
   const [openIndex, setOpenIndex] = useState(null);
   const [isInView, setIsInView] = useState(false);
   const faqSectionRef = useRef(null);
@@ -375,34 +296,7 @@ const Homepage = () => {
       </section>
 
       {/* Our Service Card Section */}
-      <div
-        ref={containerRef}
-        className="relative"
-        style={{ height: "100vh", overflow: "hidden" }}
-      >
-        <motion.div
-          className="sticky top-0 h-screen flex items-center justify-center"
-          style={{ y: pageScroll }}
-        >
-          <div className="text-white text-[100px] md:text-[200px] font-light tracking-tighter text-center px-4 md:px-8">
-            Our Services
-          </div>
-          <div
-            className="absolute w-[800px] h-[400px] md:w-[1026px] md:h-[519px] rounded-full filter blur-[30px] md:blur-[60px]"
-            style={{ backgroundColor: "#613fe83d" }}
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                {...service}
-                yOffset={yOffsets[index]}
-              />
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
+      <OurServicesSection/>
       {/* Reviews Section */}
       <section className="testimonial-section mx-auto">
         <div className="review-container">
@@ -499,37 +393,9 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="faq-section" ref={faqSectionRef}>
-      <div className={`container ${isInView ? "visible" : ""}`}>
-        <div className={`header-top left-content`}>
-          <p className="sub-title">FREQUENTLY ASKED QUESTION</p>
-          <h2 className="main-title">Our Faqs</h2>
-        </div>
-        <div className="faq-box">
-          {faqData.map((faq, index) => (
-            <div className="faq-item" key={index}>
-              <div className="question" onClick={() => toggleAnswer(index)}>
-                {faq.question}
-                {openIndex === index ? (
-                  <FaTimes className="icon" style={{ color: "#F0E68C" }} />
-                ) : (
-                  <FaPlus className="icon" style={{ color: "#F0E68C" }} />
-                )}
-              </div>
-              <div className={`answer ${openIndex === index ? "open" : ""}`}>
-                <p>{faq.answer}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>   
     </>
   );
 };
 
 export default Homepage;
-

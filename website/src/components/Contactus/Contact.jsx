@@ -300,33 +300,6 @@ const Contact = () => {
         </div>
       </div>
     </div>
-
-      {/* FAQ SECTION */}
-      <section className="faq-section" ref={faqSectionRef}>
-      <div className={`container ${isInView ? "visible" : ""}`}>
-        <div className={`header-top left-content`}>
-          <p className="sub-title">FREQUENTLY ASKED QUESTION</p>
-          <h2 className="main-title">Our Faqs</h2>
-        </div>
-        <div className="faq-box">
-          {faqData.map((faq, index) => (
-            <div className="faq-item" key={index}>
-              <div className="question" onClick={() => toggleAnswer(index)}>
-                {faq.question}
-                {openIndex === index ? (
-                  <FaTimes className="icon" style={{ color: "#F0E68C" }} />
-                ) : (
-                  <FaPlus className="icon" style={{ color: "#F0E68C" }} />
-                )}
-              </div>
-              <div className={`answer ${openIndex === index ? "open" : ""}`}>
-                <p>{faq.answer}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
     </>
   );
 };
