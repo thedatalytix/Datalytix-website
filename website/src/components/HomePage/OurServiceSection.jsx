@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const ServiceCard = ({ title, rotation, imageSrc, yOffset }) => (
   <motion.div
-    className="absolute w-[250px] h-[300px] md:w-[300px] md:h-[380px] rounded-[20px] md:rounded-[35px] lg:ml-10 overflow-hidden"
+    className="absolute w-[200px] h-[250px] md:w-[250px] md:h-[300px] lg:w-[300px] lg:h-[380px] rounded-[20px] md:rounded-[35px] overflow-hidden"
     style={{
       rotate: rotation,
-      left: "calc(50% - 125px)",
-      top: "calc(50% - 150px)",
+      left: "calc(50% - 100px)", // Adjusted for mobile
+      top: "calc(50% - 150px)", // Shift slightly upward on mobile
       y: yOffset,
     }}
   >
@@ -25,7 +25,7 @@ const ServiceCard = ({ title, rotation, imageSrc, yOffset }) => (
         className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
       />
       <div
-        className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 text-white text-[40px] md:text-[51px] font-light"
+        className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 text-white text-[24px] md:text-[40px] lg:text-[51px] font-light"
         style={{ lineHeight: "1" }}
       >
         {title}
@@ -44,32 +44,24 @@ const OurServicesSection = () => {
   const services = [
     {
       title: "Innovative Solutions",
-      gradient:
-        "bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600",
       rotation: -20,
       imageSrc:
         "https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024",
     },
     {
       title: "Hardware Solution",
-      gradient:
-        "bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700",
       rotation: -13,
       imageSrc:
         "https://framerusercontent.com/images/TriMEg9VI7vab6L5vl80XoMJYF8.jpg",
     },
     {
       title: "Artificial Intelligence",
-      gradient:
-        "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800",
       rotation: -5,
       imageSrc:
         "https://framerusercontent.com/images/7Zpq5rsCuhC8CoNtwow4eE3TemA.png",
     },
     {
       title: "Software Solution",
-      gradient:
-        "bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900",
       rotation: 5,
       imageSrc:
         "https://framerusercontent.com/images/TrbTQ8gSDTFgzJUBQkhOk2hAWOA.jpg",
@@ -91,16 +83,20 @@ const OurServicesSection = () => {
   );
 
   return (
-    <div ref={containerRef} className="relative h-[400vh]">
+    <div
+      ref={containerRef}
+      className="relative h-[400vh] -translate-y-32 md:translate-y-0"
+    >
+      {/* The -translate-y-12 moves the section upward on mobile */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <motion.div
-          className="text-[100px] md:text-[200px] font-light tracking-tighter text-center px-4 md:px-8 z-10"
+          className="text-[60px] md:text-[100px] lg:text-[200px] font-light tracking-tighter text-center px-4 md:px-8 z-10"
           style={{ color: textColor }}
         >
           Our Services
         </motion.div>
         <div
-          className="absolute w-[800px] h-[400px] md:w-[1026px] md:h-[519px] rounded-full filter blur-[30px] md:blur-[60px]"
+          className="absolute w-[400px] md:w-[800px] h-[200px] md:h-[400px] lg:w-[1026px] lg:h-[519px] rounded-full filter blur-[15px] md:blur-[30px] lg:blur-[60px]"
           style={{ backgroundColor: "#613fe83d" }}
         />
         <div className="absolute inset-0 flex items-center justify-center z-10">
