@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import "../Contactus/Contact.css";
 
 const Contact = () => {
   const parallaxRef = useRef(null);
+  const cardRef = useRef(null);
 
   // Intersection observer for right-side form content animation
   const { ref: sectionRef, inView: sectionInView } = useInView({
@@ -16,7 +17,9 @@ const Contact = () => {
     const handleScroll = () => {
       if (parallaxRef.current) {
         const scrollPosition = window.pageYOffset;
-        parallaxRef.current.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        parallaxRef.current.style.transform = `translateY(${
+          scrollPosition * 0.5
+        }px)`;
       }
     };
 
@@ -27,10 +30,7 @@ const Contact = () => {
     };
   }, []);
 
-// ANIMATION FOR CARDS
-
-  const cardRef = useRef(null);
-
+  // ANIMATION FOR CARDS
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -40,13 +40,13 @@ const Contact = () => {
             cards.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add("visible");
-              }, index * 200); 
+              }, index * 200);
             });
-            observer.unobserve(entry.target); 
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.5 } 
+      { threshold: 0.5 }
     );
 
     if (cardRef.current) {
@@ -59,8 +59,46 @@ const Contact = () => {
       }
     };
   }, []);
-  
-  
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    companyname: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('email', formData.email);
+    data.append('companyname', formData.companyname);
+    data.append('message', formData.message);
+
+    const Sheet_Url="https://script.google.com/macros/s/AKfycbykhtbbgzewRbqiEJbgEYNKFZvFgKY6DT6M3miXsKwWerJ0L_fLOKharM5lqMMeVJ8/exec"
+    try {
+      await fetch(Sheet_Url, {
+        method: 'POST',
+        body: data,
+        muteHttpExceptions: true,
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        companyname: '',
+        message: '',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="contactus-page" ref={parallaxRef}>
@@ -114,19 +152,26 @@ const Contact = () => {
               Reach out to us for any help and inquiries
             </h2>
           </div>
-          <div className={`right-content-contact ${sectionInView ? "in-view" : ""}`} ref={sectionRef}>
+          <div
+            className={`right-content-contact ${
+              sectionInView ? "in-view" : ""
+            }`}
+            ref={sectionRef}
+          >
             <div className="input-form">
-              <form method="POST" className="form">
+              <form method="POST" className="form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="your-name" className="form-label">
                     Your Name
                   </label>
                   <input
-                    id="your-name"
-                    name="your-name"
+                    id="name"
+                    name="name"
                     type="text"
                     className="form-input"
-                    placeholder=""
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -134,11 +179,13 @@ const Contact = () => {
                     Email Address
                   </label>
                   <input
-                    id="email-address"
-                    name="email-address"
+                    id="email"
+                    name="email"
                     type="email"
                     className="form-input"
-                    placeholder=""
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -146,11 +193,13 @@ const Contact = () => {
                     Company Name
                   </label>
                   <input
-                    id="company-name"
-                    name="company-name"
+                    id="companyname"
+                    name="companyname"
                     type="text"
                     className="form-input"
-                    placeholder=""
+                    value={formData.companyname}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -161,7 +210,9 @@ const Contact = () => {
                     id="message"
                     name="message"
                     className="form-input"
-                    placeholder=""
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -177,60 +228,62 @@ const Contact = () => {
 
       {/* CARDS SECTION */}
       <div className="framer-content-contact">
-      <div className="framer-about">
-        <div className="framer-left-content">
-          <h2 className="framer-heading">
-            Innovative Problem-Solving for Your Business Needs
-          </h2>
+        <div className="framer-about">
+          <div className="framer-left-content">
+            <h2 className="framer-heading">
+              Innovative Problem-Solving for Your Business Needs
+            </h2>
+          </div>
+          <div className="framer-right-content">
+            <p className="framer-subheading">SOLUTIONS</p>
+          </div>
         </div>
-        <div className="framer-right-content">
-          <p className="framer-subheading">SOLUTIONS</p>
+        <div className="framer-cards" ref={cardRef}>
+          <div className="framer-card framer-card-one">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
+                alt="Features"
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">
+                Understanding Your Business Goals
+              </h3>
+              <p className="framer-card-description">
+                We start by gaining a deep understanding of your business goals.
+              </p>
+            </div>
+          </div>
+          <div className="framer-card framer-card-two">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
+                alt=""
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">
+                Developing Tailored Solutions
+              </h3>
+              <p className="framer-card-description">
+                Next, our team of experts develops tailored solutions.
+              </p>
+            </div>
+          </div>
+          <div className="framer-card framer-card-three">
+            <div className="framer-card-content">
+              <img
+                src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
+                alt=""
+                className="framer-card-image"
+              />
+              <h3 className="framer-card-title">Implementing Technology</h3>
+              <p className="framer-card-description">
+                We leverage cutting-edge technology to implement seamlessly.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="framer-cards" ref={cardRef}>
-        <div className="framer-card framer-card-one">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
-              alt="Features"
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">
-              Understanding Your Business Goals
-            </h3>
-            <p className="framer-card-description">
-              We start by gaining a deep understanding of your business goals.
-            </p>
-          </div>
-        </div>
-        <div className="framer-card framer-card-two">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
-              alt=""
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">Developing Tailored Solutions</h3>
-            <p className="framer-card-description">
-              Next, our team of experts develops tailored solutions.
-            </p>
-          </div>
-        </div>
-        <div className="framer-card framer-card-three">
-          <div className="framer-card-content">
-            <img
-              src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
-              alt=""
-              className="framer-card-image"
-            />
-            <h3 className="framer-card-title">Implementing Technology</h3>
-            <p className="framer-card-description">
-              We leverage cutting-edge technology to implement seamlessly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
     </>
   );
 };

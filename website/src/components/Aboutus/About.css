@@ -20,7 +20,8 @@
 }
 
 .aboutus-content-wrapper {
-  width: 1350px;
+  width: 100%;
+  max-width: 1350px;
   margin: 0 auto;
 }
 
@@ -52,7 +53,7 @@
   font-size: 18px;
   margin: 10px;
   color: #fff;
-  width: 200px;
+  width: 100%;
   word-wrap: break-word;
 }
 
@@ -62,7 +63,7 @@
   color: #fff;
   width: 100%;
   max-width: 70%;
-  line-height: 1;
+  line-height: 1.2;
   word-wrap: break-word;
 }
 
@@ -70,7 +71,8 @@
   font-size: 18px;
   margin: 10px;
   color: #fff;
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   word-wrap: break-word;
 }
 
@@ -78,31 +80,51 @@
 @media (max-width: 1200px) {
   .aboutus-content {
     width: 100%;
-    padding-right: 10px;
+    padding: 15px;
   }
 
-  .about-us-title,
-  .about-us-subtitle,
-  .about-us-description {
-    width: 100%;
+  .about-us-subtitle {
+    font-size: 32px;
+  }
+
+  img {
+    height: 75vh; /* Adjust the height for medium screens */
   }
 }
+
 @media (max-width: 768px) {
   .aboutus-content {
     width: 100%;
-    padding-right: 10px;
+    padding: 10px;
   }
 
-  .about-us-title,
-  .about-us-subtitle,
+  .about-us-title {
+    font-size: 14px;
+  }
+
+  .about-us-subtitle {
+    font-size: 24px;
+    max-width: 100%;
+  }
+
   .about-us-description {
-    width: 100%;
+    font-size: 12px;
+  }
+
+  img {
+    height: 50vh; /* Reduce the image height for small screens */
+    object-fit: contain; /* Ensure the image is fully visible */
+  }
+
+  .aboutus-page {
+    padding-top: 20px; /* Add top and bottom spacing */
+    padding-bottom: 20px;
   }
 }
 
-/* HOW IT WORKS about section */
+/* HOW IT WORKS */
 .about-section {
-  padding: 80px;
+  padding: 80px 20px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -114,20 +136,18 @@
   margin: 40px auto 0;
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .left-content-about,
 .right-content-about {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .left-content-about {
-  margin-right: 20px;
-}
-
-.right-content-about {
-  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .about-header {
@@ -142,28 +162,18 @@
 }
 
 .main-title {
-  font-size: 42px;
-  color: #ffffff;
-}
-
-.heading-about {
   font-size: 32px;
   color: #ffffff;
 }
 
-.about-list-item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.list-item-content {
-  display: flex;
-  align-items: center;
+.heading-about {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
 }
 
 .number {
-  font-size: 20px;
+  font-size: 18px;
   color: #a074f9;
 }
 
@@ -173,64 +183,73 @@
 }
 
 .description {
-  font-size: 16px;
+  font-size: 14px;
   color: #fcfdf2;
 }
 
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive design */
-@media (max-width: 1300px) {
-  .aboutus-content-wrapper {
-    margin-bottom: 30px;
-  }
-
+@media (min-width: 640px) {
   .about-section {
-    margin: 30px auto 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  .aboutus-content-wrapper {
-    margin-bottom: 20px;
-  }
-
-  .about-section {
-    margin: 20px auto 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .aboutus-content-wrapper {
-    margin-bottom: 15px;
-  }
-
-  .about-section {
-    margin: 15px auto 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .subheading {
-    font-size: 14px;
+    padding: 80px 40px;
   }
 
   .main-title {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   .heading-about {
-    font-size: 18px;
-  }
-
-  .list-item-content .number {
-    font-size: 20px;
-  }
-
-  .list-item-content .title {
-    font-size: 16px;
-  }
-
-  .description {
-    font-size: 14px;
+    font-size: 28px;
   }
 }
 
+@media (min-width: 768px) {
+  .about-section {
+    padding: 80px 60px;
+  }
+
+  .main-title {
+    font-size: 38px;
+  }
+
+  .heading-about {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-section {
+    padding: 80px;
+  }
+
+  .content-wrapper {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .left-content-about {
+    margin-bottom: 0;
+  }
+
+  .main-title {
+    font-size: 42px;
+  }
+
+  .heading-about {
+    font-size: 32px;
+  }
+}

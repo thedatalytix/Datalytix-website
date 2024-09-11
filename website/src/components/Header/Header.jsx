@@ -46,15 +46,17 @@ const Header = () => {
         >
           <NavLink
             to="/about"
-            className="header-link mr-5"
-            activeClassName="active"
+            className={({ isActive }) =>
+              isActive ? "header-link mr-5 active" : "header-link mr-5"
+            }
           >
             About
           </NavLink>
           <NavLink
             to="/contact"
-            className="header-link mr-5"
-            activeClassName="active"
+            className={({ isActive }) =>
+              isActive ? "header-link mr-5 active" : "header-link mr-5"
+            }
           >
             Contact
           </NavLink>

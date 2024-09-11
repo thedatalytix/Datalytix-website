@@ -102,7 +102,10 @@ const About = () => {
         <img
           decoding="async"
           sizes="100vw"
-          srcSet="https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=512 512w,https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png 2600w"
+          srcSet="https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=512 512w, 
+            https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=1024 1024w, 
+            https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png?scale-down-to=2048 2048w, 
+            https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png 2600w"
           src="https://framerusercontent.com/images/AWt6zcoqPs9H81EMoC4xfgZEdWY.png"
           alt="Hero image"
           style={{
@@ -110,7 +113,7 @@ const About = () => {
             width: "100%",
             height: "100%",
             borderRadius: "inherit",
-            objectPosition: "center center",
+            objectPosition: "center",
             objectFit: "cover",
             position: "absolute",
             top: 0,
@@ -135,47 +138,40 @@ const About = () => {
       </div>
 
       {/* HOW IT WORKS */}
-      <section
-        ref={sectionRef}
-        className="about-section bg-black p-20 relative z-10 overflow-hidden"
-      >
-        <div className="about-container max-w-[1350px] mx-auto mt-10">
-          <div className="flex flex-col lg:flex-row">
-            <div className="left-content-about flex-1 mr-5 mb-10 lg:mb-0">
-              <div className="about-header flex flex-col gap-2.5">
-                <p className="subheading text-lg text-[#a074f9]">
-                  HOW IT WORKS
-                </p>
-                <h2 className="main-title text-4xl text-white">
+      <section ref={sectionRef} className="about-section">
+        <div className="about-container">
+          <div className="content-wrapper">
+            <div className="left-content-about">
+              <div className="about-header">
+                <p className="subheading">HOW IT WORKS</p>
+                <h2 className="main-title">
                   Our Journey Towards Technological Excellence
                 </h2>
               </div>
             </div>
-            <div className="right-content-about flex-1 ml-0">
-              <h1 className="heading-about text-3xl text-white mb-5">
+            <div className="right-content-about">
+              <h1 className="heading-about">
                 At Datalytix, we specialize in providing innovative software
                 solutions that empower businesses to streamline operations,
                 enhance productivity, and achieve their goals efficiently.
               </h1>
-              {listItems.map((item, index) => (
-                <div
-                  key={item.number}
-                  className={`about-list-item mb-5 opacity-0 transform translate-x-10 transition-all duration-500 ease-out ${
-                    sectionInView ? `opacity-100 translate-x-0` : ""
-                  }`}
-                  style={{ transitionDelay: `${index * 500}ms` }} // Adds delay for each item
-                >
-                  <div className="list-item-content flex items-center gap-2.5 mb-1">
-                    <p className="number text-xl text-[#a074f9]">
-                      {item.number}
-                    </p>
-                    <p className="title text-base text-white">{item.title}</p>
-                  </div>
-                  <p className="description text-base text-[#fcfdf2]">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+              <ul className="list-none p-0">
+                {listItems.map((item, index) => (
+                  <li
+                    key={index}
+                    className={`mb-6 opacity-0 transform translate-x-0 transition-all duration-500 ease-out ${
+                      sectionInView ? "opacity-100 translate-x-0" : ""
+                    }`}
+                    style={{ transitionDelay: `${index * 500}ms` }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <span className="number mr-2">{item.number}</span>
+                      <h3 className="title">{item.title}</h3>
+                    </div>
+                    <p className="description">{item.description}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -184,7 +180,7 @@ const About = () => {
       {/* What We're Good at */}
       <div className="bg-black text-white p-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap -mx-4">
+          <div className="flex flex-wrap -mx-6">
             <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
               <h2 className="text-4xl font-bold mb-4">
                 What We're <span className="text-purple-400">Good at.</span>
