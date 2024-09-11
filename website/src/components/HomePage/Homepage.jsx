@@ -199,7 +199,6 @@ const Homepage = () => {
               <div className="rich-text-container-main">
                 <h1 className="main-heading">
                   Transforming Businesses with
-                  <br />
                   <span className="highlighted-text">
                     Cutting-Edge Solutions
                   </span>
@@ -207,16 +206,10 @@ const Homepage = () => {
               </div>
               <div className="rich-text-container-sub">
                 <h4 className="subheading-sub">
-                  At Datalytix, we specialize in providing innovative
-                  <br />
-                  software solutions that empower businesses to
-                  <br />
-                  streamline operations,enhance productivity,
-                  <br />
-                  and achieve their goals efficiently. Discover how our
-                  solutions can transform your business
-                  <br />
-                  today.
+                  At Datalytix, we specialize in providing innovative software
+                  solutions that empower businesses to streamline operations,
+                  enhance productivity, and achieve their goals efficiently.
+                  Discover how our solutions can transform your business today.
                 </h4>
               </div>
             </div>
@@ -226,7 +219,7 @@ const Homepage = () => {
 
       {/* Our Service Card Section */}
       <OurServicesSection />
-      
+
       {/* Reviews Section */}
       <section className="testimonial-section mx-auto">
         <div className="review-container">
