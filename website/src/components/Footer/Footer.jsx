@@ -10,13 +10,11 @@ const Footer = () => {
           {/* Left Side - Logo and Title */}
           <h4 className="logo-heading">
             The DATALYTIX Solutions
-            <span className="copyright-symbol">©</span>
           </h4>
 
           {/* Right Side - Text */}
           <p className="footer-text">
-            Datalytix has the full types of potential for your start-up
-            business.
+            Fueling Business Innovation with Intelligent Insights.
           </p>
         </div>
 
@@ -41,7 +39,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="footer-copyright">© 2024 All rights reserved</div>
+        <div className="footer-copyright">© 2025 All rights reserved</div>
       </div>
     </footer>
   );

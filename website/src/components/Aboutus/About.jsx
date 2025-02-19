@@ -17,24 +17,24 @@ const About = () => {
       number: "01",
       title: "Efficiency",
       description:
-        "Designed for your team, see for yourself and manage your time with Datalytix.",
+        "We help teams become more efficient by providing valuable insights and automation.",
     },
     {
       number: "02",
       title: "Reliability",
       description:
-        "This template is not merely a design, it's a comprehensive solution.",
+        "Our solutions are built with precision and consistency to ensure dependable performance.",
     },
     {
       number: "03",
-      title: "Innovative",
+      title: "Scalability",
       description:
-        "Tailored to elevate the online presence of AI, Technology, SaaS businesses.",
+        "We design systems that grow with your business, adapting to evolving needs effortlessly.",
     },
     {
       number: "04",
-      title: "Integrates",
-      description: "Integrates with your workflow, no need to change.",
+      title: "Security",
+      description: "Data integrity and protection are at the core of our solutions, ensuring compliance and safety.",
     },
   ];
 
@@ -152,7 +152,7 @@ const About = () => {
             <div className="right-content-about">
               <h1 className="heading-about">
                 At Datalytix, we specialize in providing innovative software
-                solutions that empower businesses to streamline operations,
+                solutions that enable businesses to streamline operations,
                 enhance productivity, and achieve their goals efficiently.
               </h1>
               <ul className="list-none p-0">

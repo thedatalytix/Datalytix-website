@@ -81,7 +81,7 @@ const Homepage = () => {
             {/* Right side content */}
             <div className="text-left md:pl-6">
               <p className="text-20px">
-                Datalytix© is a leading technology company specializing in
+                Datalytix is a leading technology company specializing in
                 <br className="hidden md:inline" />
                 providing innovative software solutions and IT services.
               </p>
@@ -186,6 +186,10 @@ const Homepage = () => {
         </div>
       </div>
 
+      {/* Our Service Card Section */}
+      <OurServicesSection />
+
+
       {/* Innovative Content Section */}
       <section className="about-section-homepage">
         <div className="container-innovate">
@@ -216,12 +220,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-
-      {/* Our Service Card Section */}
-      <OurServicesSection />
-
+      
       {/* Reviews Section */}
-      <section className="testimonial-section mx-auto">
+      {/* <section className="testimonial-section mx-auto">
         <div className="review-container">
           <div className="heading1">
             <p className="subheading1">REVIEWS</p>
@@ -316,7 +317,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

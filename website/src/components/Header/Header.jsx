@@ -11,13 +11,13 @@ const Header = () => {
 
   return (
     <header className="header text-white body-font">
-      <div className="header-container flex flex-wrap p-4 items-center">
+      <div className="header-container flex flex-wrap p-4 ml-0 md:ml-4 items-center">
         <NavLink
           to="/"
           className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
         >
           <img src="/logo.png" alt="Datalytix Logo" className="h-10 w-10" />
-          <span className="ml-3 text-xl">The DATALYTIX Solutions</span>
+          <span className="ml-3 header-text">The DATALYTIX Solutions</span>
         </NavLink>
 
         <button

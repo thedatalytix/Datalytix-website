@@ -1,53 +1,65 @@
 /* Container and general styles */
 .body-font {
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header styles */
-  .header {
-    background-color: #0000004D;
-  }
-  
-  /* Link styles */
-  .header-link {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .header-link:hover {
-    color: #a074f9;
-  }
-  
-  /* Active link style */
-  .header-link.active {
-    color: #ffe9b1; /* Active link color */
-  }
-  
-  /* Logo styles */
-  .logo .text-xl {
-    font-size: 1.25rem;
-  }
-  
-  /* Responsive navigation */
+  font-family: Arial, sans-serif;
+}
+
+.header-text{
+  font-size: 25px;
+  font-weight: lighter;
+  position: relative;
+  margin: 0;
+}
+/* Header styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* Adds a blur effect */
+  background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  transition: background 0.3s ease-in-out;
+}
+
+/* Link styles */
+.header-link {
+  text-decoration: none;
+  color: white;
+}
+
+.header-link:hover {
+  color: #a074f9;
+}
+
+/* Active link style */
+.header-link.active {
+  color: #ffe9b1; /* Active link color */
+}
+
+/* Logo styles */
+.logo .text-xl {
+  font-size: 1.25rem;
+}
+
+/* Responsive navigation */
+.nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
   .nav {
-    display: none;
+    display: flex;
   }
-  
-  @media (min-width: 768px) {
-    .nav {
-      display: flex;
-    }
-  }
-  
-  /* Hamburger button */
-  .hamburger {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .hamburger svg {
-    width: 24px;
-    height: 24px;
-  }
-  
+}
+
+/* Hamburger button */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger svg {
+  width: 24px;
+  height: 24px;
+}
