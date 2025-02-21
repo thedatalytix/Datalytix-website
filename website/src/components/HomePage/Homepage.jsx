@@ -3,18 +3,28 @@ import { Link } from "react-router-dom";
 import { CountUp } from "countup.js";
 import { useInView } from "react-intersection-observer";
 import "../HomePage/Homepage.css";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Homepage = () => {
   const cardRef = useRef(null);
   const parallaxRef = useRef(null);
 
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    if (contactRef.current) {
+      const offset = 100; // Adjust this value if needed
+      const topPosition =
+        contactRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
+      window.scrollTo({ top: topPosition, behavior: "smooth" });
+    }
+  };
+
   // Intersection observer for section animation
   const { ref: howItWorksRef, inView: howItWorksInView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
-  const { ref: contactRef, inView: contactInView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
@@ -52,38 +62,26 @@ const Homepage = () => {
     {
       title: "Data Engineering",
       description:
-        "Build and maintain systems for collecting, storing, processing, and analyzing your data efficiently and at scale.Our focus is always on Mission Success, and we are very pragmatic when choosing the best tools for the job.",
+        "We design scalable systems for collecting, storing, and processing data, ensuring efficiency and mission success.",
       icon: "/data-eng.png",
     },
     {
       title: "Data Analytics",
       description:
-        "With analytics, we help our partners gain valuable insights into their operations and performance. Analytics allows teams to get transparency on ground realities, and lets organizations make data-driven decisions.",
+        "We provide insights to drive data-informed decisions, offering transparency and operational clarity.",
       icon: "/data-analytics.png",
     },
     {
       title: "Data Science & Machine Learning",
       description:
-        "Build and deploy production grade machine learning systems and pipelines at scale to support features like:",
+        "We build and deploy scalable machine learning systems to enhance automation and intelligence.",
       icon: "/machine-learning.png",
-      list: [
-        "Personalized User Feeds.",
-        "Recommendation Systems.",
-        "Fraud Detection and Prevention.",
-        "Customer Churn Prediction and many many more.",
-      ],
     },
     {
       title: "Data Security",
       description:
-        "Design systems and processes for securing mission critical data like:",
+        "We design secure systems to protect critical data, ensuring confidentiality and integrity.",
       icon: "/data-security.png",
-      list: [
-        "Automated Auditing and Monitoring data access.",
-        "Backup and Disaster Recovery.",
-        "Fine-grained Data Access Control systems.",
-        "Identify and Classify Data by sensitivity, value and impact.",
-      ],
     },
   ];
 
@@ -234,23 +232,26 @@ const Homepage = () => {
 
   return (
     <>
-      <div className="homepage flex flex-col items-start justify-start p-5 sm:p-10">
-        <div className="section-container lg:ml-16">
-          <h1 className="heading heading-xl text-white text-gradient">
+      <Header scrollToContact={scrollToContact} />
+
+      <div className="homepage flex flex-col items-center justify-start p-5 sm:p-10">
+        <div className="section-container lg:ml-0 max-w-[1200px] w-full">
+          <h1 className="heading heading-xl text-white text-gradient text-center">
             <span className="block mb-2">Empower Your Business With</span>
             <span className="inline-block mb-2">Modern Data Engineering</span>
           </h1>
-          <Link to="/about">
+          <div className="flex justify-center">
             <button
               type="button"
               className="button inline-flex items-center mt-5 space-x-2"
+              onClick={scrollToContact}
             >
               <span>Learn more</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--token-c14065e7-5a4d-4109-85cf-bca8f791260a, rgb(255, 255, 255))"
+                stroke="white"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -259,26 +260,24 @@ const Homepage = () => {
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </button>
-          </Link>
+          </div>
         </div>
 
         {/* Transforming Content */}
-        <div className="flex-container-homepage">
+        <div className="flex-container-homepage max-w-[1200px] w-full">
           <div className="flex-inner">
             {/* Left side content */}
             <div className="text-left">
-              <h1 className="text-42px">
-                Transforming Businesses with
-                <br />
+              <h1 className="home-text-left">
+                Transforming Businesses with <br />
                 <span>Cutting-Edge Solutions</span>
               </h1>
             </div>
 
             {/* Right side content */}
             <div className="text-left md:pl-6">
-              <p className="text-20px">
+              <p className="home-text-right">
                 The Datalytix is a leading technology company specializing in
-                <br className="hidden md:inline" />
                 data engineering.
               </p>
             </div>
@@ -286,15 +285,15 @@ const Homepage = () => {
         </div>
       </div>
 
-      {/* DETAILS SECTION */}
+      {/* IN NUMBERS SECTION */}
       <div className="info-container">
         <div className="info-content">
           <div className="info-text">
             <p className="info-subtitle">IN NUMBERS</p>
             <h1 className="info-heading">
-              The Datalytix, we are dedicated to providing<br></br>
-              innovative software solutions, data engineering and IT services
-              that empower businesses.<br></br>
+              The Datalytix, we are dedicated to providing innovative software
+              solutions, data engineering and IT services that empower
+              businesses.<br></br>
             </h1>
           </div>
 
@@ -381,37 +380,6 @@ const Homepage = () => {
         </div>
       </div>
 
-      {/* Innovative Content Section */}
-      <section className="about-section-homepage">
-        <div className="container-innovate">
-          <div className="content">
-            <div className="left-content-innovate">
-              <div className="rich-text-container-innovate">
-                <p className="innovate-text">INNOVATE</p>
-              </div>
-            </div>
-            <div className="right-content">
-              <div className="rich-text-container-main">
-                <h1 className="main-heading">
-                  Transforming Businesses with
-                  <span className="highlighted-text">
-                    Cutting-Edge Solutions
-                  </span>
-                </h1>
-              </div>
-              <div className="rich-text-container-sub">
-                <h4 className="subheading-sub">
-                  At Datalytix, we specialize in providing innovative software
-                  solutions that empower businesses to streamline operations,
-                  enhance productivity, and achieve their goals efficiently.
-                  Discover how our solutions can transform your business today.
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* HOW IT WORKS */}
       <section ref={howItWorksRef} className="about-section">
         <div className="about-container">
@@ -453,44 +421,42 @@ const Homepage = () => {
       </section>
 
       {/* What We're Good at */}
-      <div className="bg-black text-white p-8">
-        <div className="max-w-7xl mx-auto">
+      <div className="bg-black text-white px-4 sm:px-6 py-10 sm:py-12 flex justify-center">
+        <div className="max-w-[1150px] w-full">
           <h2
-            className="text-4xl font-bold mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 sm:mb-20 text-center"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             What We're <span className="text-purple-400">Good at.</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="p-6 rounded-2xl shadow-lg transition-transform duration-300 border-0 border-transparent hover:border-violet-500 hover:scale-105"
+                className="relative h-[220px] sm:h-[250px] w-[90%] sm:w-[280px] rounded-xl shadow-lg border-transparent transition-all duration-300 hover:scale-[1.05] group"
                 style={{
-                  background: "linear-gradient(180deg, #000000 0%, #36017a 100%)",
+                  background:
+                    "linear-gradient(180deg, #000000 0%, #36017a 100%)",
                   fontFamily: "'Mulish', sans-serif",
                 }}
               >
+                {/* Title - Top Left */}
+                <h3 className="absolute top-4 left-4 text-sm sm:text-lg font-semibold">
+                  {service.title.split(" ").slice(0, 2).join(" ")} <br />
+                  {service.title.split(" ").slice(2).join(" ")}
+                </h3>
+
+                {/* Icon - Bottom Right */}
                 <img
                   src={service.icon}
                   alt={`${service.title} icon`}
-                  className="w-16 h-16 mb-4 mx-auto"
+                  className="absolute bottom-4 right-4 w-16 sm:w-20 h-16 sm:h-20 p-2 transition-transform duration-300 group-hover:scale-110 filter invert"
                 />
-                <h3 className="text-xl font-semibold text-center mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-base text-gray-300 text-center mb-4">
+
+                {/* Flipper Effect - Description on Hover */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 text-white text-xs sm:text-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
                   {service.description}
-                </p>
-                {service.list && (
-                  <ul className="list-disc list-inside text-sm text-gray-400">
-                    {service.list.map((item, i) => (
-                      <li key={i} className="mb-2">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -498,7 +464,7 @@ const Homepage = () => {
       </div>
 
       {/* GET IN TOUCH */}
-      <section className="contact-section">
+      <section className="contact-section" ref={contactRef}>
         <div className="content">
           <div className="left-content-contact">
             <p className="contact-title">GET IN TOUCH</p>
@@ -506,12 +472,7 @@ const Homepage = () => {
               Reach out to us for any help and inquiries
             </h2>
           </div>
-          <div
-            className={`right-content-contact ${
-              contactInView ? "in-view" : ""
-            }`}
-            ref={contactRef}
-          >
+          <div className="right-content-contact">
             <div className="input-form">
               <form method="POST" className="form" onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -579,6 +540,8 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      <Footer scrollToContact={scrollToContact} />
     </>
   );
 };

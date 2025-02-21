@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../Header/Header.css";
 
-const Header = () => {
+const Header = ({ scrollToContact }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -11,19 +11,15 @@ const Header = () => {
 
   return (
     <header className="header text-white body-font">
-      <div className="header-container flex flex-wrap p-4 ml-0 md:ml-4 items-center">
-        <NavLink
-          to="/"
-          className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
-        >
+      <div className="header-container flex items-center justify-between p-2 md:px-8">
+        {/* Logo - Left */}
+        <NavLink to="/" className="logo flex title-font font-medium items-center text-white">
           <img src="/logo.png" alt="Datalytix Logo" className="h-10 w-10" />
           <span className="ml-3 header-text">The Datalytix Solutions</span>
         </NavLink>
 
-        <button
-          className="hamburger inline-flex items-center md:hidden text-white ml-auto"
-          onClick={toggleMenu}
-        >
+        {/* Hamburger Button (Mobile) */}
+        <button className="hamburger md:hidden text-white" onClick={toggleMenu}>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -39,27 +35,12 @@ const Header = () => {
             ></path>
           </svg>
         </button>
-        <nav
-          className={`nav ${
-            isOpen ? "block" : "hidden"
-          } md:flex md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center`}
-        >
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? "header-link mr-5 active" : "header-link mr-5"
-            }
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? "header-link mr-5 active" : "header-link mr-5"
-            }
-          >
+
+        {/* Navigation - Right */}
+        <nav className={`nav ${isOpen ? "block" : "hidden"} md:flex items-center space-x-5`}>
+          <button className="header-link" onClick={scrollToContact}>
             Contact
-          </NavLink>
+          </button>
         </nav>
       </div>
     </header>
