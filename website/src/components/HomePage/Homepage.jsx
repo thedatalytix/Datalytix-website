@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CountUp } from "countup.js";
 import { useInView } from "react-intersection-observer";
 import "../HomePage/Homepage.css";
 
@@ -8,7 +9,12 @@ const Homepage = () => {
   const parallaxRef = useRef(null);
 
   // Intersection observer for section animation
-  const { ref: sectionRef, inView: sectionInView } = useInView({
+  const { ref: howItWorksRef, inView: howItWorksInView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  const { ref: contactRef, inView: contactInView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
@@ -169,13 +175,70 @@ const Homepage = () => {
     };
   }, []);
 
+  // UseEffect for 0 to count values
+  useEffect(() => {
+    const counts = [
+      { id: "one", endValue: 6, duration: 2.5 },
+      { id: "two", endValue: 5, duration: 2.5, suffix: "+" },
+      { id: "three", endValue: 70, duration: 2.5, suffix: "%" },
+    ];
+
+    const observerOptions = {
+      rootMargin: "0px",
+      threshold: 0.5, // Trigger when 50% of the element is in view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const {
+            id,
+            endValue,
+            duration,
+            suffix = "",
+          } = counts.find((count) => count.id === entry.target.id) || {};
+
+          const count = new CountUp(id, endValue, {
+            duration,
+            suffix, // Append suffix
+          });
+
+          if (count.error) {
+            console.error(count.error);
+          } else {
+            count.start();
+          }
+
+          observer.unobserve(entry.target); // Stop observing after animation starts
+        }
+      });
+    }, observerOptions);
+
+    counts.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Clean up observer on component unmount
+    return () => {
+      counts.forEach(({ id }) => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       <div className="homepage flex flex-col items-start justify-start p-5 sm:p-10">
         <div className="section-container lg:ml-16">
-          <h1 className="heading heading-xl text-white">
-            <span className="block mb-2">Empower business with</span>
-            <span className="inline-block mb-2">modern data engineering</span>
+          <h1 className="heading heading-xl text-white text-gradient">
+            <span className="block mb-2">Empower Your Business With</span>
+            <span className="inline-block mb-2">Modern Data Engineering</span>
           </h1>
           <Link to="/about">
             <button
@@ -237,21 +300,23 @@ const Homepage = () => {
 
           <div className="info-stats">
             <div className="stat-item">
-              <h2 className="stat-number">6</h2>
+              <h2 className="stat-number" id="one">
+                0
+              </h2>
               <p className="stat-description">Years of Experience</p>
             </div>
-
             <div className="stat-divider"></div>
-
             <div className="stat-item">
-              <h2 className="stat-number">5+</h2>
+              <h2 className="stat-number" id="two">
+                0
+              </h2>
               <p className="stat-description">Countries in Services</p>
             </div>
-
             <div className="stat-divider"></div>
-
             <div className="stat-item">
-              <h2 className="stat-number">70%</h2>
+              <h2 className="stat-number" id="three">
+                0
+              </h2>
               <p className="stat-description">Increase in Productivity</p>
             </div>
             <div className="stat-divider"></div>
@@ -273,8 +338,8 @@ const Homepage = () => {
           <div className="framer-card framer-card-one">
             <div className="framer-card-content">
               <img
-                src="https://framerusercontent.com/images/WcwmUqi6p7SrskGZZqAN5UoWA.webp?scale-down-to=512"
-                alt="Features"
+                src="/Images/card.png"
+                alt="card"
                 className="framer-card-image"
               />
               <h3 className="framer-card-title">
@@ -288,8 +353,8 @@ const Homepage = () => {
           <div className="framer-card framer-card-two">
             <div className="framer-card-content">
               <img
-                src="https://framerusercontent.com/images/uetXJoargk4e4jLKMltVY8rchqs.png?scale-down-to=512"
-                alt=""
+                src="/Images/card1.png"
+                alt="card1"
                 className="framer-card-image"
               />
               <h3 className="framer-card-title">
@@ -303,8 +368,8 @@ const Homepage = () => {
           <div className="framer-card framer-card-three">
             <div className="framer-card-content">
               <img
-                src="https://framerusercontent.com/images/widUlSARRksnEnxLfmV5RiZGWHg.png?scale-down-to=512"
-                alt=""
+                src="/Images/card2.png"
+                alt="card2"
                 className="framer-card-image"
               />
               <h3 className="framer-card-title">Implementing Technology</h3>
@@ -348,7 +413,7 @@ const Homepage = () => {
       </section>
 
       {/* HOW IT WORKS */}
-      <section ref={sectionRef} className="about-section">
+      <section ref={howItWorksRef} className="about-section">
         <div className="about-container">
           <div className="content-wrapper">
             <div className="left-content-about">
@@ -370,7 +435,7 @@ const Homepage = () => {
                   <li
                     key={index}
                     className={`mb-6 opacity-0 transform translate-x-0 transition-all duration-500 ease-out ${
-                      sectionInView ? "opacity-100 translate-x-0" : ""
+                      howItWorksInView ? "opacity-100 translate-x-0" : ""
                     }`}
                     style={{ transitionDelay: `${index * 500}ms` }}
                   >
@@ -390,38 +455,44 @@ const Homepage = () => {
       {/* What We're Good at */}
       <div className="bg-black text-white p-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap -mx-6">
-            <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
-              <h2 className="text-4xl font-bold mb-4">
-                What We're <span className="text-purple-400">Good at.</span>
-              </h2>
-            </div>
-            <div className="w-full lg:w-2/3 px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {services.map((service, index) => (
-                  <div key={index} className="pb-8">
-                    <img
-                      src={service.icon}
-                      alt={`${service.title} icon`}
-                      className="w-20 h-20 mb-6"
-                    />
-                    <h3 className="text-2xl font-semibold mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-lg mb-4">{service.description}</p>
-                    {service.list && (
-                      <ul className="list-disc list-inside">
-                        {service.list.map((item, i) => (
-                          <li key={i} className="text-xm mb-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
+          <h2
+            className="text-4xl font-bold mb-12 text-center"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            What We're <span className="text-purple-400">Good at.</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="p-6 rounded-2xl shadow-lg transition-transform duration-300 border-0 border-transparent hover:border-violet-500 hover:scale-105"
+                style={{
+                  background: "linear-gradient(180deg, #000000 0%, #36017a 100%)",
+                  fontFamily: "'Mulish', sans-serif",
+                }}
+              >
+                <img
+                  src={service.icon}
+                  alt={`${service.title} icon`}
+                  className="w-16 h-16 mb-4 mx-auto"
+                />
+                <h3 className="text-xl font-semibold text-center mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-base text-gray-300 text-center mb-4">
+                  {service.description}
+                </p>
+                {service.list && (
+                  <ul className="list-disc list-inside text-sm text-gray-400">
+                    {service.list.map((item, i) => (
+                      <li key={i} className="mb-2">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -437,9 +508,9 @@ const Homepage = () => {
           </div>
           <div
             className={`right-content-contact ${
-              sectionInView ? "in-view" : ""
+              contactInView ? "in-view" : ""
             }`}
-            ref={sectionRef}
+            ref={contactRef}
           >
             <div className="input-form">
               <form method="POST" className="form" onSubmit={handleSubmit}>
