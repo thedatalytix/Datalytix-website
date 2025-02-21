@@ -17,7 +17,7 @@ const Header = () => {
           className="logo flex title-font font-medium items-center text-white mb-4 md:mb-0 flex-grow md:flex-grow-0"
         >
           <img src="/logo.png" alt="Datalytix Logo" className="h-10 w-10" />
-          <span className="ml-3 header-text">The DATALYTIX Solutions</span>
+          <span className="ml-3 header-text">The Datalytix Solutions</span>
         </NavLink>
 
         <button

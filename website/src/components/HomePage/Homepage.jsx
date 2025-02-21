@@ -5,36 +5,6 @@ import "../HomePage/Homepage.css";
 
 const Homepage = () => {
   const cardRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cards = cardRef.current.querySelectorAll(".framer-card");
-            cards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add("visible");
-              }, index * 200); // Delay each card by 200ms
-            });
-            observer.unobserve(entry.target); // Stop observing once the animation has run
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
-  }, []);
-
   const parallaxRef = useRef(null);
 
   // Intersection observer for section animation
@@ -111,6 +81,76 @@ const Homepage = () => {
     },
   ];
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    companyname: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("companyname", formData.companyname);
+    data.append("message", formData.message);
+
+    const Sheet_Url =
+      "https://script.google.com/macros/s/AKfycbykhtbbgzewRbqiEJbgEYNKFZvFgKY6DT6M3miXsKwWerJ0L_fLOKharM5lqMMeVJ8/exec";
+    try {
+      await fetch(Sheet_Url, {
+        method: "POST",
+        body: data,
+        muteHttpExceptions: true,
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        companyname: "",
+        message: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Innovative Problem-Solving Cards Sliding
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = cardRef.current.querySelectorAll(".framer-card");
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("visible");
+              }, index * 200); // Delay each card by 200ms
+            });
+            observer.unobserve(entry.target); // Stop observing once the animation has run
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   // Parallax effect on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -129,53 +169,13 @@ const Homepage = () => {
     };
   }, []);
 
-   const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      companyname: "",
-      message: "",
-    });
-  
-    const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-  
-    const handleSubmit = async(e) => {
-      e.preventDefault();
-      console.log('Form submitted:', formData);
-      const data = new FormData();
-      data.append('name', formData.name);
-      data.append('email', formData.email);
-      data.append('companyname', formData.companyname);
-      data.append('message', formData.message);
-  
-      const Sheet_Url="https://script.google.com/macros/s/AKfycbykhtbbgzewRbqiEJbgEYNKFZvFgKY6DT6M3miXsKwWerJ0L_fLOKharM5lqMMeVJ8/exec"
-      try {
-        await fetch(Sheet_Url, {
-          method: 'POST',
-          body: data,
-          muteHttpExceptions: true,
-        });
-  
-        setFormData({
-          name: '',
-          email: '',
-          companyname: '',
-          message: '',
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  
   return (
     <>
       <div className="homepage flex flex-col items-start justify-start p-5 sm:p-10">
         <div className="section-container lg:ml-16">
           <h1 className="heading heading-xl text-white">
             <span className="block mb-2">Empower business with</span>
-            <span className="inline-block mb-2">modern technology</span>
-            <span className="block">solutions</span>
+            <span className="inline-block mb-2">modern data engineering</span>
           </h1>
           <Link to="/about">
             <button
@@ -214,9 +214,9 @@ const Homepage = () => {
             {/* Right side content */}
             <div className="text-left md:pl-6">
               <p className="text-20px">
-                Datalytix is a leading technology company specializing in
+                The Datalytix is a leading technology company specializing in
                 <br className="hidden md:inline" />
-                providing innovative software solutions and IT services.
+                data engineering.
               </p>
             </div>
           </div>
@@ -229,10 +229,9 @@ const Homepage = () => {
           <div className="info-text">
             <p className="info-subtitle">IN NUMBERS</p>
             <h1 className="info-heading">
-              At Datalytix, we are dedicated to providing<br></br>
-              innovative software solutions<br></br>
-              and IT services that<br></br>
-              empower businesses.<br></br>
+              The Datalytix, we are dedicated to providing<br></br>
+              innovative software solutions, data engineering and IT services
+              that empower businesses.<br></br>
             </h1>
           </div>
 
@@ -252,7 +251,7 @@ const Homepage = () => {
             <div className="stat-divider"></div>
 
             <div className="stat-item">
-              <h2 className="stat-number">30%</h2>
+              <h2 className="stat-number">70%</h2>
               <p className="stat-description">Increase in Productivity</p>
             </div>
             <div className="stat-divider"></div>
@@ -265,11 +264,9 @@ const Homepage = () => {
         <div className="framer-about">
           <div className="framer-left-content">
             <h2 className="framer-heading">
-              Innovative Problem-Solving for Your Business Needs
+              Innovative Problem-Solving & Data Intelligence <br></br>
+              for Your Business Needs{" "}
             </h2>
-          </div>
-          <div className="framer-right-content">
-            <p className="framer-subheading">SOLUTIONS</p>
           </div>
         </div>
         <div className="framer-cards" ref={cardRef}>
