@@ -277,7 +277,7 @@ const Homepage = () => {
             {/* Right side content */}
             <div className="text-left md:pl-6">
               <p className="home-text-right">
-                The Datalytix is a leading technology company specializing in
+                The Datalytix Solutions is a leading technology company specializing in
                 data engineering.
               </p>
             </div>
@@ -291,7 +291,7 @@ const Homepage = () => {
           <div className="info-text">
             <p className="info-subtitle">IN NUMBERS</p>
             <h1 className="info-heading">
-              The Datalytix, we are dedicated to providing innovative software
+              The Datalytix Solutions, we are dedicated to providing innovative software
               solutions, data engineering and IT services that empower
               businesses.<br></br>
             </h1>
@@ -394,7 +394,7 @@ const Homepage = () => {
             </div>
             <div className="right-content-about">
               <h1 className="heading-about">
-                At Datalytix, we specialize in providing innovative software
+                The Datalytix Solutions, we specialize in providing innovative software
                 solutions that enable businesses to streamline operations,
                 enhance productivity, and achieve their goals efficiently.
               </h1>

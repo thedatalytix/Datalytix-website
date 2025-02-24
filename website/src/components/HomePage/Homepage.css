@@ -222,6 +222,7 @@
 .info-subtitle {
   font-size: 16px;
   color: #a076f9;
+  margin-bottom: 15px;
 }
 
 /* Heading */
@@ -491,6 +492,7 @@
   background-color: #000;
   padding: 50px 20px; /* Added padding for better spacing on mobile */
   text-align: center; /* Center content for mobile */
+  margin-top: 30px;
 }
 
 .about-container {
@@ -524,8 +526,9 @@
 }
 
 .main-title {
-  font-size: 28px; /* Reduced for mobile */
+  font-size: 40px;
   color: #ffffff;
+  font-family: "Playfair Display", serif;
 }
 
 /* Right Content */
@@ -536,17 +539,17 @@
 }
 
 .number {
-  font-size: 16px; /* Adjusted */
+  font-size: 18px; /* Adjusted */
   color: #a074f9;
 }
 
 .title {
-  font-size: 14px; /* Adjusted */
+  font-size: 18px; /* Adjusted */
   color: #ffffff;
 }
 
 .description {
-  font-size: 13px; /* Adjusted */
+  font-size: 14px; /* Adjusted */
   color: #fcfdf2;
 }
 
@@ -582,11 +585,6 @@
 }
 
 @media (min-width: 768px) {
-  .about-section {
-    padding: 80px 40px;
-    text-align: left; /* Align left on larger screens */
-  }
-
   .content-wrapper {
     align-items: flex-start; /* Align left */
     text-align: left;
@@ -602,21 +600,9 @@
 }
 
 @media (min-width: 1024px) {
-  .about-section {
-    padding: 100px 60px;
-  }
-
   .content-wrapper {
     flex-direction: row;
     gap: 40px;
-  }
-
-  .main-title {
-    font-size: 42px;
-  }
-
-  .heading-about {
-    font-size: 32px;
   }
 }
 
@@ -767,22 +753,21 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   align-items: flex-start;
 }
 
 /* Center text only on mobile */
 .contact-title {
   font-size: 18px;
-  margin: 10px;
   color: #6a1b9a;
 }
 
 .contact-subtitle {
-  font-size: 42px;
-  margin: 5px;
-  line-height: 1.2;
+  font-size: 36px;
+  line-height: 1.4;
   color: #fff;
+  font-family: "Playfair Display", serif;
 }
 
 .right-content-contact {
